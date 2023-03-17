@@ -1,0 +1,16 @@
+﻿monster type,Animal,Ghost,Mythical,Possessed Object,Undead
+caught by fred,13,26,11,12,7
+captured fred,7,10,5,6,5
+caught by daphne,2,5,4,4,3
+captured daphne,8,14,5,6,5
+caught by velma,3,4,1,5,7
+captured velma,6,13,7,6,3
+caught by shaggy,7,21,4,3,3
+captured shaggy,8,14,5,5,2
+caught by scooby,21,36,10,8,10
+captured scooby,9,10,3,3,4
+fred caught - captured,6,16,6,6,2
+daphne caught - captured,-6,-9,-1,-2,-2
+velma caught - captured,-3,-9,-6,-1,4
+shaggy caught - captured,-1,7,-1,-2,1
+scooby caught - captured,12,26,7,5,6

@@ -1,0 +1,29 @@
+.hero-profile-images{
+    width:4cm;
+    height:4cm;
+    filter: grayscale(75%);
+    transition: filter 0.5s ease-in-out;
+}
+
+.hero-profile {
+    position: relative;
+    display: inline-block;
+  }
+
+.hero-profile-text-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .hero-profile:hover .hero-profile-text-overlay {
+    opacity: 1;
+  }

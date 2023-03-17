@@ -1,17 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>My NM2207 GitHub Portfolio</title>
-    <script src="scripts/counter.js"></script>
-    <link rel="stylesheet" href="styles/styles.css" />
-  </head>
-  <body>
-    <h1>Hello world! 🚀</h1>
-    <h2>This is a site hosted on GitHub Pages.</h2>
-    <h3>Here's a hungry mouse. Please feed him!</h3>
-    <h3>His name is Jack.</h3>
-    <h3 class="mouse">🐁</h3>
-    <h3>Food counter: <span class="counter">0</span> 🥙</h3>
-    <button>Feed!</button>
-  </body>
+<head>
+    <title>Scooby-Doo Crew Review</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/appstyle.css">
+    <script defer type="text/javascript" src="appscripts/main.js"> </script>
+</head>
+<body>
+
+<h1>Scooby-Doo Crew Review</h1>
+
+<!--introduction, background, and motivation-->
+<h2>Background</h2>
+    <!--introduce Scooby-doo franchise-->
+    <p>Since the original series “Scooby-Doo, Where Are You!” launched in 1969, the Scooby-Doo franchise has expanded into numerous television series and movies, with the latest series “Velma” premiering as of the time of writing, in March 2023.</p>
+
+    <p>
+        The main premise of most series within the franchise revolves around the “Mystery Inc.” gang, comprising of the main characters Fred Jones, Daphne Blake, Velma Dinkley, Shaggy Rogers, and their talking Great Dane, Scooby-Doo. They travel around in their van, the Mystery Machine, to investigate spooky happenings and unmask the monsters behind them.
+    </p>
+    <br>
+    <p>(introduce 5 heroes here)</p>
+
+
+    <div class="hero-profile-gallery">
+        <table>
+            <tr>
+                <td class="hero-profile">
+                    <img src="resources/images/hero_profile/daphne.jpg" class="hero-profile-images">
+                    <div class="hero-profile-text-overlay">
+                      <p>Daphne Blake description</p>
+                    </div>
+                </td>
+                <td class="hero-profile">
+                    <img src="resources/images/hero_profile/fred.jpg" class="hero-profile-images">
+                    <div class="hero-profile-text-overlay">
+                      <p>Fred Jones description</p>
+                    </div>
+                </td>
+                <td class="hero-profile">
+                    <img src="resources/images/hero_profile/scooby.jpg" class="hero-profile-images">
+                    <div class="hero-profile-text-overlay">
+                      <p>Scooby-Doo description</p>
+                    </div>
+                </td>
+                <td class="hero-profile">
+                    <img src="resources/images/hero_profile/shaggy.jpg" class="hero-profile-images">
+                    <div class="hero-profile-text-overlay">
+                      <p>Shaggy Rogers description</p>
+                    </div>
+                </td>
+                <td class="hero-profile">
+                    <img src="resources/images/hero_profile/velma.jpg" class="hero-profile-images">
+                    <div class="hero-profile-text-overlay">
+                      <p>Velma Dinkley description</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+<h2>Motivation</h2>
+    <p>
+        The franchise has remained popular with audiences of all ages for over 50 years, and each of the five heroes have become some of the most popular characters in Western media. In particular, their strong friendships and ability to work as a team to solve mysteries and fight crime is at the heart and soul of its popularity.
+    </p>
+
+    <p>
+        While all viewers have their favourites, each hero has something unique to bring to the table, and it is the purpose of this data story to uncover the unique qualities of each hero.
+    </p>
+    <br>
+
+<h2>The Dataset</h2>
+    <p>introduction of dataset here</p>
+
+    <p>
+        The dataset used here is <a href="https://www.kaggle.com/datasets/williamschooleman/scoobydoo-complete">Scooby-Doo Complete</a> by @plummye on Kaggle. The creator spent about a year watching every Scooby-Doo iteration, to produce this dataset containing 603 records, each tracking 75 variables, from iterations aired over 53 years (from 1969 to 2021).
+    </p>
+    <br>
+
+
+<!--point 1: general picture of how heroes fare against monsters-->
+<h2>The Scooby-Doo Crew Against Monsters</h2>
+
+    <!--top 5 common monsters-->
+    <h3>Top 5 Common Types of Monsters</h3>
+        <p>There are as many as 12 broad types of monsters appearing in the Scooby-Doo series and films. To be more specific and accurate in our analysis, we will focus only on the more common types of monsters.</p>
+        <p>From the donut chart, it is obvious that the Animal, Ghost, Mythical, Possessed Object, and Undead types are significantly more prominent than the rest. These will be the types of monsters focused on in the next segment.</p>
+
+        <!--simple donut chart showing top 5 monsters, canvas container-->
+        <div id="canvas-container">
+            <canvas id="donut-chart" width="400" height="400"></canvas>
+        </div>
+    
+    <br>
+
+    <h3>How the Heroes Fare Against the Top 5 Common Monsters</h3>
+    <!--radar chart-->
+        <p>Using a radar chart, we get a general picture of how each hero fares against the top 5 common monster types.</p>
+        <p>The values here are derived from (number of each monster the hero caught) minus (number of captures of the hero, by the monster). This number can be thought of as the generalized strength of the hero against the monster.</p>
+        <!--radar chart canvas container-->
+        <div id="canvas-container">
+            <canvas id="radar-chart" width="400" height="400"></canvas>
+        </div>
+
+    <h3>A Deeper Analysis into each Hero</h3>
+        <p>Here, we will analyse each hero's capabilities in a deeper way. Each horizontal bar chart will show the rate of the hero catching a type of monster, as well as the rate of the hero being captured by the monster.</p>
+        <p>The earlier radar chart gives us sort of a net strength a hero has against a type of monster. However, it fails to capture some intricacies that may be important.</p>
+
+        <!--gallery view, 5 views, one for each hero-->
+        
+        <!--daphne-->
+        <h4>Daphne</h4>
+            <!--daphne's description-->
+            <p>(some text description)</p>
+            <!--daphne's horizontal bar chart canvas container-->
+            <div id="canvas-container">
+                <canvas id="daphne-bar-chart" width="400" height="400"></canvas>
+            </div>
+            <br>
+
+        <!--fred-->
+        <h4>Fred</h4>
+            <!--fred's description-->
+            <p>(some text description)</p>
+            <!--fred's horizontal bar chart canvas container-->
+            <div id="canvas-container">
+                <canvas id="fred-bar-chart" width="400" height="400"></canvas>
+            </div>
+            <br>
+        
+        <!--scooby-->
+        <h4>Scooby</h4>
+            <!--scooby's description-->
+            <p>(some text description)</p>
+            <!--scooby's horizontal bar chart canvas container-->
+            <div id="canvas-container">
+                <canvas id="scooby-bar-chart" width="400" height="400"></canvas>
+            </div>
+            <br>
+
+        <!--shaggy-->
+        <h4>Shaggy</h4>
+            <!--shaggy's description-->
+            <p>(some text description)</p>
+            <!--shaggy's horizontal bar chart canvas container-->
+            <div id="canvas-container">
+                <canvas id="shaggy-bar-chart" width="400" height="400"></canvas>
+            </div>
+            <br>
+
+        <!--velma-->
+        <h4>Velma</h4>
+            <!--velma's description-->
+            <p>(some text description)</p>
+            <!--velma's horizontal bar chart canvas container-->
+            <div id="canvas-container">
+                <canvas id="velma-bar-chart" width="400" height="400"></canvas>
+            </div>
+            <br>
+
+
+<!--point 3: analysis of each character with scooby snacks-->
+<h2>"Would you do it for a Scooby Snack?"</h2>
+    <p>Scooby will do anything for a Scooby Snack. These snacks are often used as an incentive by the four human heroes to convince Scooby-Doo to participate in dangerous or frightening schemes, such as acting as bait for a monster, helping to solve the mystery in the end.</p>
+    <p>Even though Daphne was one of the most incompetent in terms of catching the monster, as well as in terms avoiding being captured, she has actually offered the most Scooby Snacks, which were instrumental to eventually capture the monster.</p>
+    <p>(more analysis)</p>
+    <!--chart canvas container-->
+    <div id="canvas-container">
+        <canvas id="snacks-chart" width="400" height="400"></canvas>
+    </div>
+
+<!--conclusion: each hero's strength and weakness-->
+<h2>Conclusion</h2>
+<p>(present conclusions on the strengths and weaknesses of each hero (something like a pokemon card)</p>
+<!--daphne's card-->
+    <h4>Daphne</h4>
+        <button onclick = "print_daphne_properties()">Print Daphne's Properties</button>
+        <p id="daphne_output"></p>
+<!--fred's card-->
+    <h4>Fred</h4>
+        <p>similar button as daphne</p>
+<!--scooby's card-->
+    <h4>Scooby</h4>
+        <p>similar button as daphne</p>
+<!--shaggy's card-->
+    <h4>Shaggy</h4>
+        <p>similar button as daphne</p>
+<!--Velma's card-->
+    <h4>Velma</h4>
+        <p>similar button as daphne</p>
+
+<h2>Links for Week 9 Submissions</h2>
+    <p>
+        <a href="interim submission/actual/index.html">Storyboard</a>
+        <br>
+        <a href="https://nm2207.s3.ap-southeast-1.amazonaws.com/NM2207_w9_concepts_used.pdf">PDF containing list of concepts used</a>
+    </p>
+</body>
 </html>
