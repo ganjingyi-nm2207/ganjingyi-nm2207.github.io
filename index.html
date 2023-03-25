@@ -19,45 +19,59 @@
         The main premise of most series within the franchise revolves around the “Mystery Inc.” gang, comprising of the main characters Fred Jones, Daphne Blake, Velma Dinkley, Shaggy Rogers, and their talking Great Dane, Scooby-Doo. They travel around in their van, the Mystery Machine, to investigate spooky happenings and unmask the monsters behind them.
     </p>
     <br>
-    <p>(introduce 5 heroes here)</p>
-
+    <!--introduce five heroes here-->
 
     <div class="hero-profile-gallery">
         <table>
             <tr>
-                <td class="hero-profile">
-                    <img src="resources/images/hero_profile/daphne.jpg" class="hero-profile-images">
-                    <div class="hero-profile-text-overlay">
-                      <p>Daphne Blake description</p>
-                    </div>
+                <td id="daphne-profile" class="hero-profile" onmouseover="expandImage('daphne-clipped');discolorBackground('daphne-background');descriptionSlidein('daphne-description-slider')" onmouseout="shrinkImage('daphne-clipped');recolorBackground('daphne-background');descriptionSlideout('daphne-description-slider')">
+                    <img src="resources/images/hero_profile/daphne_landscape.jpeg" id="daphne-background" class="hero-landscape-images">
+                    <img src="resources/images/hero_profile/daphne_clipped.PNG" id="daphne-clipped" class="hero-profile-images-clipped">
                 </td>
-                <td class="hero-profile">
-                    <img src="resources/images/hero_profile/fred.jpg" class="hero-profile-images">
-                    <div class="hero-profile-text-overlay">
-                      <p>Fred Jones description</p>
-                    </div>
+                <td id="fred-profile" class="hero-profile" onmouseover="expandImage('fred-clipped');discolorBackground('fred-background');descriptionSlidein('fred-description-slider')" onmouseout="shrinkImage('fred-clipped');recolorBackground('fred-background');descriptionSlideout('fred-description-slider')">
+                    <img src="resources/images/hero_profile/fred_landscape.jpeg" id="fred-background" class="hero-landscape-images">
+                    <img src="resources/images/hero_profile/fred_clipped.PNG" id="fred-clipped" class="hero-profile-images-clipped">
                 </td>
-                <td class="hero-profile">
-                    <img src="resources/images/hero_profile/scooby.jpg" class="hero-profile-images">
-                    <div class="hero-profile-text-overlay">
-                      <p>Scooby-Doo description</p>
-                    </div>
+                <td id="scooby-profile" class="hero-profile" onmouseover="expandImage('scooby-clipped');discolorBackground('scooby-background');descriptionSlidein('scooby-description-slider')" onmouseout="shrinkImage('scooby-clipped');recolorBackground('scooby-background');descriptionSlideout('scooby-description-slider')">
+                    <img src="resources/images/hero_profile/scooby_landscape.jpeg" id="scooby-background" class="hero-landscape-images">
+                    <img src="resources/images/hero_profile/scooby_clipped.PNG" id="scooby-clipped" class="hero-profile-images-clipped">
                 </td>
-                <td class="hero-profile">
-                    <img src="resources/images/hero_profile/shaggy.jpg" class="hero-profile-images">
-                    <div class="hero-profile-text-overlay">
-                      <p>Shaggy Rogers description</p>
-                    </div>
+                <td id="shaggy-profile" class="hero-profile" onmouseover="expandImage('shaggy-clipped');discolorBackground('shaggy-background');descriptionSlidein('shaggy-description-slider')" onmouseout="shrinkImage('shaggy-clipped');recolorBackground('shaggy-background');descriptionSlideout('shaggy-description-slider')">
+                    <img src="resources/images/hero_profile/shaggy_landscape.jpeg" id="shaggy-background" class="hero-landscape-images">
+                    <img src="resources/images/hero_profile/shaggy_clipped.PNG"  id="shaggy-clipped" class="hero-profile-images-clipped">
                 </td>
-                <td class="hero-profile">
-                    <img src="resources/images/hero_profile/velma.jpg" class="hero-profile-images">
-                    <div class="hero-profile-text-overlay">
-                      <p>Velma Dinkley description</p>
-                    </div>
+                <td id="velma-profile" class="hero-profile" onmouseover="expandImage('velma-clipped');discolorBackground('velma-background');descriptionSlidein('velma-description-slider')" onmouseout="shrinkImage('velma-clipped');recolorBackground('velma-background');descriptionSlideout('velma-description-slider')">
+                    <img src="resources/images/hero_profile/velma_landscape.png" id="velma-background" class="hero-landscape-images">
+                    <img src="resources/images/hero_profile/velma_clipped.PNG" id="velma-clipped"class="hero-profile-images-clipped">
                 </td>
             </tr>
         </table>
     </div>
+
+    <div id="description-slider-container">
+        <div id="daphne-description-slider" class="description-sliders">
+            <h4>Daphne Blake</h4>
+            <p>Daphne exudes effortless cool with her fashion sense that's always on point and razor-sharp wit. Her intelligence is just as striking as her beauty, and she's unafraid to take charge when things get tough. When the gang is on the lookout for clues, Daphne is quick to spot anything that might help them unravel their latest mystery.</p>
+        </div>
+        <div id="fred-description-slider" class="description-sliders">
+            <h4>Fred Jones</h4>
+            <p>Confident and suave, Fred is always ready to lead the gang to victory. His trusty ascot is a symbol of his resourcefulness, and his mastery of gadgets always comes in handy. When the gang needs a plan, Fred is their go-to guy, relying on his quick thinking and problem-solving skills to get the job done.</p>
+        </div>
+        <div id="scooby-description-slider" class="description-sliders">
+            <h4>Scooby-Doo</h4>
+            <p>Scooby Doo is the heart and soul of the gang, with his lovable goofiness and never-ending appetite for Scooby Snacks. His loyalty to his friends knows no bounds, and he's always willing to put himself in harm's way to help out. Scooby may not be the smartest member of the group, but his bravery and quick thinking have saved the day more times than anyone can count.</p>
+        </div>
+        <div id="shaggy-description-slider" class="description-sliders">
+            <h4>Shaggy Rogers</h4>
+            <p>Despite his laid-back attitude and love of food, Shaggy is always ready to step up and do what's right. His unflappable courage and resourcefulness have saved the gang from countless scrapes, proving that sometimes, even the most unlikely heroes can rise to the occasion. When the going gets tough, Shaggy's bravery shines through.</p>
+        </div>
+        <div id="velma-description-slider" class="description-sliders">
+            <h4>Velma</h4>
+            <p>With her signature orange turtleneck and thick glasses, Velma is the brains behind the gang. Her sharp eye for detail and quick thinking have saved them from countless dangerous situations. Velma's dry wit always keeps things interesting, and she's always one step ahead of the bad guys, proving that brains can be just as important as brawn.</p>
+        </div>
+
+    </div>
+
 
 <h2>Motivation</h2>
     <p>
@@ -171,7 +185,7 @@
 
 <!--conclusion: each hero's strength and weakness-->
 <h2>Conclusion</h2>
-<p>(present conclusions on the strengths and weaknesses of each hero (something like a pokemon card)</p>
+<p>present conclusions on the strengths and weaknesses of each hero (something like a pokemon card)</p>
 <!--daphne's card-->
     <h4>Daphne</h4>
         <button onclick = "print_daphne_properties()">Print Daphne's Properties</button>
@@ -194,6 +208,11 @@
         <a href="interim_submission/index.html">Storyboard</a>
         <br>
         <a href="https://nm2207.s3.ap-southeast-1.amazonaws.com/NM2207_w9_concepts_used.pdf">PDF containing list of concepts used</a>
+    </p>
+
+<h2>Links for Week 10 Submissions</h2>
+    <p>
+        <a href="w10_submission/index.html">Week 10 Submission</a>
     </p>
 </body>
 </html>

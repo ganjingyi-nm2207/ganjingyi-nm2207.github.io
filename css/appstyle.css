@@ -1,29 +1,79 @@
-.hero-profile-images{
-    width:4cm;
-    height:4cm;
-    filter: grayscale(75%);
-    transition: filter 0.5s ease-in-out;
+@font-face {
+  font-family: 'spooky';
+  src: url(../resources/spooky-font/spooky.ttf);
+}
+
+@font-face {
+  font-family: 'monster-scratch';
+  src: url(../resources/monster-scratch-font/monster-scratch.ttf);
+}
+
+@font-face {
+  font-family: 'x-typewriter';
+  src: url(../resources/x-typewriter-font/x-typewriter.ttf);
+}
+
+@font-face {
+  font-family: 'x-typewriter-bold';
+  src: url(../resources/x-typewriter-font/x-typewriter-bold.ttf);
+}
+
+body{
+  margin:5%;
+}
+
+h1 {
+  font-family: 'monster-scratch', sans-serif;
+  text-transform:uppercase;
+}
+
+h2 {
+  font-family: 'spooky', sans-serif;
+  text-transform:uppercase;
+}
+
+h4{
+  font-family: 'spooky', sans-serif;
+  text-transform:capitalize;
+  font-size:x-large;
+}
+
+p {
+  font-family: 'x-typewriter', sans-serif;
+}
+
+.hero-profile-gallery{
+  display:flex;
+  justify-content: center;
+}
+
+.hero-landscape-images {
+  width: 3cm;
+  height: 3cm;
 }
 
 .hero-profile {
-    position: relative;
-    display: inline-block;
-  }
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-.hero-profile-text-overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    text-align: center;
-    padding: 20px;
-  }
+.hero-profile-images-clipped {
+  position: absolute;
+  top: 0;
+  left: 0.02cm;
+  width:3cm;
+  height:3cm;
+}
 
-  .hero-profile:hover .hero-profile-text-overlay {
-    opacity: 1;
-  }
+.description-sliders {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  background-color: pink;
+  transition: height 0.3s ease;
+}
+

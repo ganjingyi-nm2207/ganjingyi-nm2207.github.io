@@ -1,3 +1,62 @@
+//hero profile 
+
+  //function to expand each hero's image when hovered over
+    function expandImage(clippedImage) {
+      // get clipped image
+      const imageId = '#' + clippedImage
+      const image = document.querySelector(imageId);
+      
+      // expand clipped image
+      image.style.transform = 'scale(1.1) translateY(-10%)';
+      image.style.transformOrigin = 'top left';
+      image.style.transition = 'transform 0.3s ease';
+    }
+
+  //function to shrink each hero's image when hovering away
+    function shrinkImage(clippedImage) {
+      // get clipped image
+      const imageId = '#' + clippedImage
+      const image = document.querySelector(imageId);
+      
+      // shrink clipped image
+      image.style.transform = 'scale(1)';
+      image.style.transition = 'transform 0.3s ease';
+    }
+
+  //function to discolor the background of each hero's image when hovered over
+    function discolorBackground(backgroundImage) {
+      // get background image
+      const imageId = '#' + backgroundImage
+      const image = document.querySelector(imageId);
+
+      // add filter on background
+      image.style.filter = 'sepia(100%)';
+    }
+
+  //function to discolor the background of each hero's image when hovering away
+    function recolorBackground(backgroundImage) {
+      // get background image
+      const imageId = '#' + backgroundImage
+      const image = document.querySelector(imageId);
+      
+      // remove filter on background
+      image.style.filter = 'none';
+    }
+
+  //function to slide in description in heroes profile when hovered over
+    function descriptionSlidein(sliderId){
+      const slider = document.getElementById(sliderId);
+      const sliderHeight = slider.scrollHeight;
+      slider.style.height = sliderHeight + 'px';
+    }
+
+  //function to slide out description in heroes profile when hovering away
+    function descriptionSlideout(sliderId){
+      const slider = document.getElementById(sliderId);
+      slider.style.height = '0';
+    }
+
+
 //donut chart
 const donutChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/scooby_bar_chart.csv")
 .then(function (response) {
