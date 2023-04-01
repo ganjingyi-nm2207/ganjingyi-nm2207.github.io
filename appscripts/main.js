@@ -1,3 +1,59 @@
+//navigation bar 
+  const dataStoryPage = document.querySelector('#dataStory'); //assign data story section to variable
+  const diaryEntriesPage = document.querySelector('#diaryEntries'); //assign diary entries section to variable
+  const links = document.querySelectorAll('nav a'); //select all <a> elements that are descendants of <nav> element, stored as node list in variable links
+  console.log(links);
+
+  //function to display page, with the page (dataStoryPage/ diaryEntriesPage) as argument
+  function showPage(page) {
+    page.style.display = 'block'; //sets 'display' css property of page to 'block'
+  }
+
+  //function to hide page, with the page (dataStoryPage/ diaryEntriesPage) as argumenent
+  function hidePage(page) {
+    page.style.display = 'none'; //sets 'display' css property of page to 'none'
+  }
+
+  //function to display and hide the correct pages when links are clicked
+  function togglePage(event) {
+    event.preventDefault(); //prevent navigation to new page (default behaviour when clicking on link)
+    const link = event.target.getAttribute('href'); //extract string of 'href' attribute of link that was clicked, assign to variable 'link' 
+    if (link === '#dataStory') { 
+      showPage(dataStoryPage); //show data story page
+      hidePage(diaryEntriesPage); //hide diary entries page
+      links[0].parentNode.classList.add('active'); //'active' class added to first link in the navigation bar which is links[0]
+      links[1].parentNode.classList.remove('active'); //'active' class removed from second link in the navigation bar which is links[1]
+      const line = document.querySelector('nav .line'); 
+      line.style.width = links[0].offsetWidth + 'px'; 
+    } else if (link === '#diaryEntries') {
+      showPage(diaryEntriesPage); //show diary entries page
+      hidePage(dataStoryPage); //hide data story page
+      links[1].parentNode.classList.add('active'); //'active' class added to second link in the navigation bar which is links[1]
+      links[0].parentNode.classList.remove('active'); //'active' class removed from first link in the navigation bar which is links[0]
+      const line = document.querySelector('nav .line');
+      line.style.width = links[1].offsetWidth + 'px';
+    }
+    const nav = document.querySelector('nav');
+    nav.classList.add('animate'); // add 'animate' class to nav element
+    const line = document.querySelector('nav .line'); 
+    line.style.width = event.target.offsetWidth + 'px';
+    line.style.transform = `translateX(${event.target.offsetLeft}px)`;
+  }
+
+  //attach event listener to each of the links (previously declared to be all the links in the navigation menu), and execute togglePage function when clicked
+  links.forEach(function(link) {
+    link.addEventListener('click', togglePage);
+  });
+
+  // Show the first page by default
+  showPage(dataStoryPage);
+  links[0].parentNode.classList.add('active');
+  const nav = document.querySelector('nav');
+  nav.classList.add('animate');
+  const line = document.querySelector('nav .line');
+  line.style.width = links[0].offsetWidth + 'px';
+  line.style.transform = `translateX(${links[0].offsetLeft}px)`;
+
 //hero profile 
 
   //function to expand each hero's image when hovered over
@@ -7,7 +63,6 @@
       const image = document.querySelector(imageId);
       
       // expand clipped image
-      image.style.transform = 'scale(1.1) translateY(-10%)';
       image.style.transformOrigin = 'top left';
       image.style.transition = 'transform 0.3s ease';
     }
@@ -56,6 +111,41 @@
       slider.style.height = '0';
     }
 
+//slider 
+const slider = document.querySelector('.slider');
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let currentSlide = 0;
+
+// Show the first slide and dot as active
+slides[currentSlide].classList.add('active');
+dots[currentSlide].classList.add('active');
+
+// Arrow controls
+slider.addEventListener('click', (event) => {
+  if (event.target.classList.contains('arrow-left')) {
+    currentSlide--;
+    if (currentSlide < 0) {
+      currentSlide = slides.length - 1;
+    }
+  } else if (event.target.classList.contains('arrow-right')) {
+    currentSlide++;
+    if (currentSlide > slides.length - 1) {
+      currentSlide = 0;
+    }
+  }
+
+  // Update active slide and dot
+  slides.forEach((slide) => {
+    slide.classList.remove('active');
+  });
+  dots.forEach((dot) => {
+    dot.classList.remove('active');
+  });
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+});
+
 
 //donut chart
 const donutChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/scooby_bar_chart.csv")
@@ -81,6 +171,7 @@ const donutChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/sco
         datasets: [
           {
             data: numberOfMonster,
+            backgroundColor: ["#cbd6e4","#c86558","#cbd6e4","#cbd6e4","#c86558","#cbd6e4","#cbd6e4","#c86558","#cbd6e4","#c86558","#cbd6e4","#c86558"],
           },
         ],
       };
@@ -274,7 +365,7 @@ const daphneHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.ama
                 max: 40,
               }
             }]
-          }
+          },
         },
       });
     });

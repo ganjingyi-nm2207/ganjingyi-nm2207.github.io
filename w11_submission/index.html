@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Week 11 Submission</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+
+				<!-- header -->
+					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+						<div class="content">
+							<h1>Scooby-Doo Crew Review: Week 11 Submission</h1>
+							<p class="major">This is the Week 11 diary entry for my final data story titled "Scooby-Doo Crew Review".</p>
+							<ul class="actions stacked">
+								<li><a href="#data" class="button big wide smooth-scroll-middle">Get Started</a></li>
+							</ul>
+						</div>
+						<div class="image">
+							<img src="images/scooby_doo_full_cast.jpeg" alt="" />
+						</div>
+					</section>
+
+				<!-- data -->
+					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="data">
+						<div class="content">
+							<h2>The data I plan to use is</h2>
+							<p> <a href="https://www.kaggle.com/datasets/williamschooleman/scoobydoo-complete">"Scooby-Doo Complete"</a> by @plummye on Kaggle. </p>
+							<p>The creator spent about a year watching every Scooby-Doo iteration, to produce this dataset containing 603 records, each tracking 75 variables, from iterations aired over 53 years (from 1969 to 2021)</p>
+							<ul class="actions stacked">
+								<li><a href="#columns" class="button big wide smooth-scroll-middle">Next</a></li>
+							</ul>
+						</div>
+						<div class="image">
+							<img src="images/shaggy_scooby_backview.jpg" alt="" />
+						</div>
+					</section>
+
+
+				<!-- columns i am using -->
+				<section class="wrapper style1 align-center" id="columns">
+					<div class="inner">
+						<h2>Here are the columns I intend to use</h2>
+							<ul>
+								<li>
+									monster_type: Type of monster(s) of target in the episode
+								</li>
+								<li>
+									monster_amount: The number of monsters of target in the episode
+								</li>
+								<li>
+									caught_fred: Binary variable of whether the monster was caught by Fred in the episode
+								</li>
+								<li>
+									caught_daphnie: Binary variable of whether the monster was caught by Daphne in the episode
+								</li>
+								<li>
+									caught_velma: Binary variable of whether the monster was caught by Velma in the episode
+								</li>
+								<li>
+									caught_shaggy: Binary variable of whether the monster was caught by Shaggy in the episode
+								</li>
+								<li>
+									caught_scooby: Binary variable of whether the monster was caught by Scooby in the episode
+								</li>
+								<li>
+									captured_fred: Binary variable of whether Fred was captured by the monster in the episode
+								</li>
+								<li>
+									captured_daphnie: Binary variable of whether Daphne was captured by the monster in the episode
+								</li>
+								<li>
+									captured_velma: Binary variable of whether Velma captured by the monster in the episode
+								</li>
+								<li>
+									captured_shagggy: Binary variable of whether Shaggy was captured by the monster in the episode
+								</li>
+								<li>
+									captured_scooby: Binary variable of whether Scooby was captured by the monster in the episode
+								</li>
+								<li>
+									snack_fred: Binary variable of whether Fred gave Scooby a scooby-snack in the episode
+								</li>
+								<li>
+									snack_daphnie: Binary variable of whether Daphne gave Scooby a scooby-snack in the episode
+								</li>
+								<li>
+									snack_velma: Binary variable of whether Velma gave Scooby a scooby-snack in the episode
+								</li>
+								<li>
+									snack_shagggy: Binary variable of whether Shaggy gave Scooby a scooby-snack in the episode
+								</li>
+								<li>
+									snack_scooby: Binary variable of whether Scooby gave himself a scooby-snack in the episode
+								</li>
+							</ul>
+							<ul class="actions stacked">
+								<li><a href="#donut" class="button big wide smooth-scroll-middle">Next</a></li>
+							</ul>
+				</section>
+
+				<!-- donut chart visualisation -->
+				<section class="wrapper style1 align-left" id="donut">
+					<div class="inner">
+						<h2>The Visualisations: Donut Chart</h2>
+							<p>Although there are many various types of monsters that appear in the episodes, we should focus our discussion only on the following 5 types of monsters (Animal, Ghost, Mythical, Possessed Object, and Undead). This is mainly because the appearances other types of monsters are pretty rare, hence the sample size may be inadequate to make a reliable judgement of how each hero fares at tackling these rarer monsters. Besides, this simplifies and scopes the discussion better. </p>
+							<ol>
+								<caption>From Raw Data to CSV file</caption>
+								<li>I removed all the entries from the dataset that had a number of monsters other than one, as I am only interested in the instances where a single monster appeared. This was necessary because the dataset only provides information on whether a character was caught or captured by monsters in general in that episode, and not specifically by which monster. Therefore, I had to filter the data in order to avoid this limitation and allow for a more meaningful discussion.</li>
+								<li>After filtering out the entries where the monster amount was not equal to one, I generated a pivot table in Excel. In this chart, I grouped the remaining entries by monster type and displayed the count of each monster type. The monster type was placed in the rows section of the pivot chart and the values section displayed the count. I sorted the pivot table according to the count of monsters, and kept only the entries with the top 5 counts. </li>
+								<li>I then used the Excel Transpose function to have the monster types in the first row, and the corresponding values in the second row. Then, I saved the file as a CSV file and imported it using Fetch API. </li>
+
+
+							</ol>
+							<ul class="actions stacked">
+								<li><a href="#radar" class="button big wide smooth-scroll-middle">Next</a></li>
+							</ul>
+				</section>
+
+				
+				<!-- radar chart visualisation -->
+				<section class="wrapper style1 align-left" id="radar">
+					<div class="inner">
+						<h2>The Visualisations: Radar Chart</h2>
+							<p>The purpose of this chart is to provide a high-level overview of how the heroes perform against the top 5 most common types of monsters. In order to achieve this broad perspective, certain details may be lost. Specifically, we will be using a derived value for each character's ability against each monster, calculated by subtracting the number of times the character was captured by the monster from the number of times the character caught the monster (hence losing these two values). The resulting chart will display five polygons, one for each character, with the size of the polygon providing a general indication of the hero's ability level - the larger the polygon, the stronger the hero is considered to be.</p>
+							<ol>
+								<caption>From Raw Data to CSV file</caption>
+								<li>All entries with a number of monsters other than 1 are removed (as with the above donut chart). In addition, all entries with the monster type other than the top 5 common monsters derived above are removed. </li>
+								<li>For every hero, I carried out the following process
+									<ul>
+										<li>I generated a pivot table with the monster type in the row field. Using a binary variable to indicate whether the hero caught the monster, I placed the count of this variable in the values field. To display only the number of times the hero caught the monster, I applied a filter to show only the values that equaled "TRUE".</li>
+										<li>I repeated this to show the number of times the hero was captured by the monster. </li>
+										<li>I combined the above data into one spreadsheet, then derived the value (to be used in the chart, representing the hero’s strength against each monster) by subtracting the number of times the character was captured by the monster from the number of times the character caught the monster. </li>
+										<li>I used the Excel Transpose function to have the monster types in the first row, and the corresponding values of the hero’s strength to that monster in the second row. Then, I saved the file as a CSV file and imported it using Fetch API.</li>
+									</ul>
+								</li>
+							</ol>
+							<ul class="actions stacked">
+								<li><a href="#horizontal-bar" class="button big wide smooth-scroll-middle">Next</a></li>
+							</ul>
+				</section>
+
+				<!-- horizontal bar charts visualisation -->
+				<section class="wrapper style1 align-left" id="horizontal-bar">
+					<div class="inner">
+						<h2>The Visualisations: Horizontal Bar Charts</h2>
+							<p>The aim of these charts is to provide a more detailed examination of how each hero performs against each monster. The values presented in the radar chart were obtained by subtracting the number of times a character is captured by a monster from the number of times the character catches the monster. In contrast, the horizontal bar charts (one for each hero) allow us to show the individual breakdown of these two values: the number of times a hero catches a monster, and the number of times a hero is captured by a monster.</p>
+							<ol>
+								<caption>From Raw Data to CSV file</caption>
+								<li>All entries with a number of monsters other than 1 are removed (as with the above donut chart). In addition, all entries with the monster type other than the top 5 common monsters derived above are removed. </li>
+								<li>For every hero, I carried out the following process
+									<ul>
+										<li>Similar to the process described for creating a radar chart, I started by preparing a spreadsheet that included the number of times each hero caught each type of monster, as well as the number of times each hero was captured by each monster.</li>
+										<li>However, to display this information on the horizontal bar chart, I represented the number of times each hero was captured by a given monster as a negative value. I achieved this by simply adding a negative sign to the value (since there were only five entries).</li>
+									</ul>
+								</li>
+							</ol>
+							<ul class="actions stacked">
+								<li><a href="#vertical-bar" class="button big wide smooth-scroll-middle">Next</a></li>
+							</ul>
+				</section>
+				
+				<!-- vertical bar charts visualisation -->
+				<section class="wrapper style1 align-left" id="vertical-bar">
+					<div class="inner">
+						<h2>The Visualisations: Vertical Bar Chart</h2>
+							<p>The goal is to determine which hero gives out more and less scooby snacks, in relation to the other heroes displayed on the chart.</p>
+							<ol>
+								<caption>From Raw Data to CSV file</caption>
+								<li>The columns I will use are snack_fred, snack_daphnie, snack_velma, snack_shaggy, snack_scooby. </li>
+								<li>I generated a pivot table containing the five values in the columns. Then, I applied a filter to display only entries marked as "TRUE," indicating that the respective hero gave a Scooby-snack in that particular episode.</li>
+								<li>Then, I simply transposed the data and saved it as a CSV file. </li>
+							</ol>
+							<ul class="actions stacked">
+								<li><a href="#errors" class="button big wide smooth-scroll-middle">Next</a></li>
+							</ul>
+				</section>
+
+				<!-- progress and errors -->
+				<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in" id="errors">
+					<div class="content">
+						<h2>My progress and errors this week</h2>
+							<h3>Navigation Bar</h3>
+								<p>This week, I added a navigation bar that would, in the same webpage, display a different section when the corresponding pages are clicked. </p>
+								<ul>
+									<li>In the process of doing this, I encountered new concepts about further splitting my html body into &lt;header&gt;, &lt;nav&gt;, and &lt;main&gt;.</li>
+									<li>While exploring online about how to display the correct section when the navigation bar is clicked on, I encountered the DOM query selector that can select HTML elements and assign them to variables.</li>
+									<li>I faced issues with the styles for the active page not showing up by default (I managed to set the default page to be displayed, but the css styles (100% opacity) and underlines for the selected page were not showing up. To solve this, I had to add the “active” class to the default page using HTML. Thereafter, this “active” class could be removed and added whenever the pages are clicked on.</li>
+									<li>Something I have yet to figure out is how to keep the line under the selected page when I resize the window.</li>
+								</ul>		
+							<h3>Slider</h3>
+								<p>As I am showing 5 horizontal bar charts, with each pertaining to each character, I decided to put this into a slider. </p>
+								<ul>
+									<li>As I explored online, I realised that the JS components of creating this slider is somewhat similar to creating the functional navigation bar, and applied similar concepts, such as adding the ‘active’ CSS class to the selected html element.</li>
+									<li>However, the slider might have been a little more complicated as now there were arrow controls that had to be configured, instead of just clicking on the page the user wants (as in the navigation bar). With the help of Chat GPT, the function called when the event listener receives a click to the left/right arrows make use of +1 and -1 functions to change the ‘currentSlide variable’ (initially set to be 0), to move to the previous and next slides, to keep track of the current slide index and progress forward or backward based on user input.</li>
+									<li>However, one problem I have yet to solve is the disappearance of my chartJS tooltips after I put them into the slider... I’ve tried setting the tooltips display to true using chartJS but it did not work.</li>
+								</ul>
+						<ul class="actions stacked">
+							<li><a href="#links" class="button big wide smooth-scroll-middle">Next</a></li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- links -->
+				<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="links">
+					<div class="content">
+						<h2>Links</h2>
+						<a href="https://ganjingyi-nm2207.github.io/">Final Project work in progress</a>
+					</div>
+				</section>
+
+				<!-- footer -->
+					<footer class="wrapper style1 align-center">
+						<div class="inner">
+							<p>Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

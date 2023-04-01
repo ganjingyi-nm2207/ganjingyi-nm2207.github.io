@@ -18,14 +18,117 @@
   src: url(../resources/x-typewriter-font/x-typewriter-bold.ttf);
 }
 
-body{
-  margin:5%;
+/*header styling*/
+header {
+  position: relative;
+  height: 550px; 
 }
 
-h1 {
-  font-family: 'monster-scratch', sans-serif;
-  text-transform:uppercase;
+.header-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
+
+.header-image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px; 
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+}
+
+.header-text {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 24px;
+  font-family: 'monster-scratch', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  background: radial-gradient(ellipse at center, #79af30, #bb5c37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/*navigation bar styling*/
+  nav {
+    position: relative;
+    padding-bottom: 12px;
+    padding-top:30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav .line {
+    height:2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: black;
+    transition: all 0.3s ease;
+  }
+  
+  nav.animate .line{
+    transition: none;
+  }
+
+  nav ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex
+  }
+
+  nav ul li{
+    margin: 0 40px 0 0;
+    opacity: 0.4;
+    transition: all 0.4s ease;
+    font-family: 'x-typewriter-bold', sans-serif;
+  }
+
+  nav ul li:hover {
+    opacity: 0.7;
+  }
+
+  nav ul li.active {
+    opacity: 1;
+    
+  }
+
+  nav ul li:last-child {
+    margin-right: 0;
+  }
+
+  nav ul li a{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    display: block;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    font-size:14px;
+  }
+
+/*main section styling*/
+  main{
+    margin:5%;
+  }
+
+
 
 h2 {
   font-family: 'spooky', sans-serif;
@@ -42,38 +145,135 @@ p {
   font-family: 'x-typewriter', sans-serif;
 }
 
-.hero-profile-gallery{
-  display:flex;
-  justify-content: center;
-}
+/*hero profile gallery styling*/
+  .hero-profile-gallery{
+    display:flex;
+    justify-content: center;
+  }
 
-.hero-landscape-images {
-  width: 3cm;
-  height: 3cm;
-}
+  .hero-landscape-images {
+    width: 3cm;
+    height: 3cm;
+  }
 
-.hero-profile {
-  position: relative;
-  display: inline-block;
-  margin: 0;
-  box-sizing: border-box;
-}
+  .hero-profile {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    box-sizing: border-box;
+  }
 
-.hero-profile-images-clipped {
-  position: absolute;
-  top: 0;
-  left: 0.02cm;
-  width:3cm;
-  height:3cm;
-}
+  .hero-profile-images-clipped {
+    position: absolute;
+    top: 0;
+    left: 0.02cm;
+    width:3cm;
+    height:3cm;
+  }
 
-.description-sliders {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  overflow: hidden;
-  background-color: pink;
-  transition: height 0.3s ease;
-}
+  .description-sliders {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    background-color: pink;
+    transition: height 0.3s ease;
+  }
 
+/*top 5 monsters*/
+  #top5-monsters-container {
+    display: flex;
+  }
+
+  #top5-monsters-text {
+    flex: 1;
+  }
+
+  #top5-monsters-chart {
+    flex: 1;
+  }
+
+/*how heroes fare against top 5 common monsters*/
+  #how-heroes-fare-top5-container {
+    display: flex;
+  }
+
+  #how-heroes-fare-top5-chart {
+    flex: 1;
+  }
+
+  #how-heroes-fare-top5-text {
+    flex: 1;
+  }
+
+/*slider styling*/
+  .slider {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin:2%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .slide.active {
+    opacity: 1;
+  }
+
+  .horizontal-bar-chart{
+    width:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: grey;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .arrow-left {
+    left: 20px;
+  }
+
+  .arrow-right {
+    right: 20px;
+  }
+
+  .dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: rgba(222, 222, 222, 0.5);
+    border-radius: 50%;
+  }
+
+  .dot.active {
+    background-color: grey;
+  }
