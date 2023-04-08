@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Week 12 Submission</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+
+				<!-- header -->
+					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+						<div class="content">
+							<h1>Scooby-Doo Crew Review: Week 12 Submission</h1>
+							<p class="major">This is the Week 12 diary entry for my final data story titled "Scooby-Doo Crew Review".</p>
+							<ul class="actions stacked">
+								<li><a href="#error1" class="button big wide smooth-scroll-middle">Get Started</a></li>
+							</ul>
+						</div>
+						<div class="image">
+							<img src="images/scooby_doo_full_cast.jpeg" alt="" />
+						</div>
+					</section>
+
+				<!-- error1 -->
+					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="error1">
+						<div class="content">
+							<h2>Header Formatting Issues</h2>
+							<p>
+								In the header section, I included both an image and a div that gradually turns black at the lower part. Unfortunately, I faced difficulty in making the image and the div dimensions consistent even when I manually specified their height (while keeping width at 100%). Moreover, the issue intensified when I tried resizing the window.
+							</p>
+							<p>
+								To address the issue of mismatched sizes between the image and the fade div in my header, ChatGPT recommended using jQuery to dynamically set their heights. The solution involves using the jQuery .height() method to retrieve the image height and applying it to the fade div. To ensure that the function runs both when the page loads and the window is resized, an event listener was added. However, to make the JS portion work, certain modifications had to be made to the CSS code. This includes changing the position settings to relative (some were absolute), removing all height settings, and keeping the width at 100%. Additionally, to maintain the aspect ratio of the header image and allow for auto height, adjustments were made to the height attribute.
+							</p>
+							<p>
+								Once the issue with the image and fade div heights was resolved, I encountered another problem with the text positioned at the bottom of the header. The text size wasn't adjusting when the window was resized. ChatGPT advised me to use CSS media queries to modify the font size of the text element based on the viewport width. Although this solution was effective, the text sometimes expanded to two lines. To keep the text on a single line, I added the 'white-space' property and set it to nowrap.
+							</p>
+							<ul class="actions stacked">
+								<li><a href="#error2" class="button big wide smooth-scroll-middle">Next</a></li>
+							</ul>
+						</div>
+						<div class="image">
+							<img src="images/shaggy_scooby_backview.jpg" alt="" />
+						</div>
+					</section>
+
+
+				<!-- error2 -->
+				<section class="wrapper style1 align-center" id="error2">
+					<div class="inner">
+						<h2>Navigation Bar Formatting Issues</h2>
+						<p>
+							Last week, I faced a problem with keeping the line under the selected page when the window is resized.
+						</p>
+						<p>
+							Following the solution used to fix the issue with the header size, I figured out that a similar approach could be employed here. I decided to add an event listener to the window object that listens for the resize event and updates the width and position of the line accordingly when the event is triggered. This allowed the line to stay in the correct position and size even when the window is resized.
+						</p>
+							<ul class="actions stacked">
+								<li><a href="#error3" class="button big wide smooth-scroll-middle">Next</a></li>
+							</ul>
+					</div>
+				</section>
+
+				<!-- error3 -->
+				<section class="wrapper style1 align-left" id="error3">
+					<div class="inner">
+						<h2>Horizontal Bar Charts: From Chart.JS to Plotly</h2>
+						<p>
+							Initially, I used horizontal bar charts in chart.js to display the positive and negative values of each character's ability, which showed the number of monsters the character caught and the number of times the character was captured by the monster, respectively. However, I encountered a problem when trying to analyze the graphs because certain types of monsters appeared more frequently, making it seem like the characters were stronger as they could catch more of these common monsters, even though it was not necessarily a reflection of their ability. To address this issue, I standardized the numbers to percentages to show the rate at which each character catches the monster. I attempted to change the plot type in chart.js, but it was unsuccessful, so I switched to using plotly instead.
+						</p>
+						<p>
+							I computed the standardised values required to show the rate at which each character catches the monster. I used EXCEL functions to perform the calculations manually and then entered these percentages into an array.
+						</p>
+						<p>
+							I used the Plotly <a href="https://plotly.com/javascript/horizontal-bar-charts/#bar-chart-with-line-plot">guide</a> as a reference for creating my graphs.
+						</p>
+						<p>
+							I encountered difficulties with the positioning of the legend, but ChatGPT suggested using the yanchor and y properties, which helped me resolve the issue.
+						</p>
+						<p>
+							I encountered some difficulties with the hover template property and was uncertain about how to personalize my tooltip to display values as percentages. However, chatgpt assisted me with this and it turned out to be a simple problem.
+						</p>
+						<p>
+							However, despite placing my graphs within the slider like my previous chart.js graphs, I am still encountering issues with tooltips and graph interaction not appearing. This is a matter I will have to address in the upcoming week.
+						</p>
+
+						<ul class="actions stacked">
+							<li><a href="#error4" class="button big wide smooth-scroll-middle">Next</a></li>
+						</ul>
+					</div>
+				</section>
+
+				
+				<!-- error4 -->
+				<section class="wrapper style1 align-left" id="error4">
+					<div class="inner">
+						<h2>Creating Character Cards</h2>
+						<p>
+							After completing my analysis, my main focus this week was to come up with compelling phrases that accurately highlight the strengths and weaknesses of each character. This required spending considerable time brainstorming and refining the language used to ensure it was both eye-catching and informative.
+						</p>
+						<p>
+							I started working on creating a card flip effect for an individual card and found inspiration from a YouTube video that can be found at <a href="https://www.google.com/search?q=card+flip+effect+css&sxsrf=APwXEdcadsFzRcAZlhrzPYRG5Zd_cscdiQ:1680938428092&source=lnms&tbm=vid&sa=X&ved=2ahUKEwj08ZTP35n-AhU8yjgGHXQWAwgQ_AUoAXoECAEQAw&biw=989&bih=812&dpr=1#fpstate=ive&vld=cid:3aee4c99,vid:QGVXmoZWZuw">this link</a>. Using the css transform: rotateY() property, I was able to achieve the desired effect.
+						</p>
+						<p>
+							Additionally, I gained knowledge on JS DOM manipulation through the querySelector feature. By clicking on an element, I was able to modify its class name, allowing relevant CSS properties to be applied. However, when attempting to implement this on all 5 cards, the flip effect only worked on the first card while the remaining 4 were unresponsive. Upon further inspection, I realized that the querySelector only selects the first element with the specified class name. To address this issue, I used querySelectorAll instead and applied a forEach method to add the class name only to the clicked card.
+						</p>
+						<p>
+							I dedicated most of my time to designing the layout for each of my cards. As I had a lot of div elements involved, it became quite complex, particularly with regards to the alignment, margin, line heights, and padding. To tackle this issue, I added temporary borders to each div element (as pictured below), enabling me to identify precisely where the spacing issues were originating from. Finally, I was able to gradually figure it out.
+						</p>
+						<img src="images/border.png" class="border_image">
+
+						<ul class="actions stacked">
+							<li><a href="#links" class="button big wide smooth-scroll-middle">Next</a></li>
+						</ul>
+				</section>
+
+				<!-- links -->
+				<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="links">
+					<div class="content">
+						<h2>Links</h2>
+						<a href="https://ganjingyi-nm2207.github.io/">Final Project work in progress</a>
+					</div>
+				</section>
+
+				<!-- footer -->
+					<footer class="wrapper style1 align-center">
+						<div class="inner">
+							<p>Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
