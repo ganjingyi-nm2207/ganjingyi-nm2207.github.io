@@ -1,3 +1,12 @@
+//header section
+$(window).on("load resize", function() {
+  $(".header-image").each(function() {
+    var height = $(this).find("img").height();
+    $(this).find(".fade").height(height);
+  });
+});
+
+
 //navigation bar 
   const dataStoryPage = document.querySelector('#dataStory'); //assign data story section to variable
   const diaryEntriesPage = document.querySelector('#diaryEntries'); //assign diary entries section to variable
@@ -44,6 +53,14 @@
   links.forEach(function(link) {
     link.addEventListener('click', togglePage);
   });
+
+  // Add event listener to window object to update line when window is resized
+  window.addEventListener('resize', function() {
+  const activeLink = document.querySelector('.active a');
+  const line = document.querySelector('nav .line'); 
+  line.style.width = activeLink.offsetWidth + 'px';
+  line.style.transform = `translateX(${activeLink.offsetLeft}px)`;
+});
 
   // Show the first page by default
   showPage(dataStoryPage);
@@ -305,7 +322,7 @@ const radarChartData = fetch(
 
 
 //daphne's horizontal bar chart 
-const daphneHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/daphne_monster_analysis.csv")
+/*const daphneHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/daphne_monster_analysis.csv")
 .then(function (response) {
       return response.text();
     })
@@ -369,10 +386,88 @@ const daphneHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.ama
         },
       });
     });
+    */
+  
+  //daphne's horizontal bar chart using plotly
+      d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminder_with_codes.csv", function (err, data) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      const monster = ['Animal','Ghost','Mythical','Possessed Object','Undead'];
+      const caughtColor = 'blue';
+      const capturedColor = 'pink';
+      const daphneCaughtPercent = [20,26,44,40,48];
+      const daphneCapturedPercent =[];
+      for (let i = 0; i < daphneCaughtPercent.length; i++) {
+        daphneCapturedPercent.push(100 - daphneCaughtPercent[i]);
+      }
+
+      // define trace data for each bar
+      const trace1 = {
+        x: daphneCaughtPercent,
+        y: monster,
+        name: 'Daphne catches monster',
+        orientation: 'h',
+        marker: {
+          color: 'blue',
+          width: 1
+        },
+        type: 'bar',
+        hovertemplate: '%{x:.0f}%'
+      };
+
+      const trace2 = {
+        x: daphneCapturedPercent,
+        y: monster,
+        name: 'monster captures Daphne',
+        orientation: 'h',
+        marker: {
+          color: 'pink',
+          width: 1
+        },
+        type: 'bar',
+        hovertemplate: '%{x:.0f}%'
+      };
+
+      const traceData = [trace1, trace2];
+
+      // Define the layout for the horizontal bar chart with axis labels, chart title, and subtitle
+      const layout = {
+        title: {
+          text: "% of Each Monster Type that Daphne Catches, <br>and Captures Daphne",
+          font: { size: 20 },
+        },
+        xaxis: {
+          title: "Percentage",
+          tickformat: ',.0%',
+          range: [0, 100],
+          showgrid: false,
+          showticklabels: false
+        },
+        yaxis: {
+          title: "Monster Type",
+          automargin: true
+        },
+        barmode: 'stack',
+        margin: { t: 100, b: 130, l: 150, r: 150 },
+        height: '100%',
+        legend:{
+          y: -0.24,
+          yanchor: 'top',
+          orientation: 'h'
+        }
+      };
+
+
+      // Create the bar chart 
+      Plotly.newPlot("daphne-bar-chart", traceData, layout);
+    });
 
 
 //fred's horizontal bar chart 
-const fredHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/fred_monster_analysis.csv")
+/*const fredHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/fred_monster_analysis.csv")
 .then(function (response) {
       return response.text();
     })
@@ -435,11 +530,87 @@ const fredHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.amazo
           }
         },
       });
-    });
+    }); */
 
+      //fred's horizontal bar chart using plotly
+      d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminder_with_codes.csv", function (err, data) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      const monster = ['Animal','Ghost','Mythical','Possessed Object','Undead'];
+      const caughtColor = 'blue';
+      const capturedColor = 'pink';
+      const fredCaughtPercent = [65,72,69,67,58];
+      const fredCapturedPercent =[];
+      for (let i = 0; i < fredCaughtPercent.length; i++) {
+        fredCapturedPercent.push(100 - fredCaughtPercent[i]);
+      }
+
+      // define trace data for each bar
+      const trace1 = {
+        x: fredCaughtPercent,
+        y: monster,
+        name: 'Fred catches monster',
+        orientation: 'h',
+        marker: {
+          color: 'blue',
+          width: 1
+        },
+        type: 'bar',
+        hovertemplate: '%{x:.0f}%'
+      };
+
+      const trace2 = {
+        x: fredCapturedPercent,
+        y: monster,
+        name: 'monster captures Fred',
+        orientation: 'h',
+        marker: {
+          color: 'pink',
+          width: 1
+        },
+        type: 'bar',
+        hovertemplate: '%{x:.0f}%'
+      };
+
+      const traceData = [trace1, trace2];
+
+      // Define the layout for the horizontal bar chart with axis labels, chart title, and subtitle
+      const layout = {
+        title: {
+          text: "% of Each Monster Type that Fred Catches, <br>and Captures Fred",
+          font: { size: 20 },
+        },
+        xaxis: {
+          title: "Percentage",
+          tickformat: ',.0%',
+          range: [0, 100],
+          showgrid: false,
+          showticklabels: false
+        },
+        yaxis: {
+          title: "Monster Type",
+          automargin: true
+        },
+        barmode: 'stack',
+        margin: { t: 100, b: 130, l: 150, r: 150 },
+        height: '100%',
+        legend:{
+          y: -0.24,
+          yanchor: 'top',
+          orientation: 'h'
+        }
+      };
+
+
+      // Create the bar chart 
+      Plotly.newPlot("fred-bar-chart", traceData, layout);
+    });
   
 //scooby's horizontal bar chart 
-const scoobyHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/scooby_monster_analysis.csv")
+/*const scoobyHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/scooby_monster_analysis.csv")
 .then(function (response) {
       return response.text();
     })
@@ -502,10 +673,87 @@ const scoobyHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.ama
           }
         },
       });
+    });*/
+
+    //scooby's horizontal bar chart using plotly
+    d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminder_with_codes.csv", function (err, data) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      const monster = ['Animal','Ghost','Mythical','Possessed Object','Undead'];
+      const caughtColor = 'blue';
+      const capturedColor = 'pink';
+      const scoobyCaughtPercent = [70,78,77,73,71];
+      const scoobyCapturedPercent =[];
+      for (let i = 0; i < scoobyCaughtPercent.length; i++) {
+        scoobyCapturedPercent.push(100 - scoobyCaughtPercent[i]);
+      }
+
+      // define trace data for each bar
+      const trace1 = {
+        x: scoobyCaughtPercent,
+        y: monster,
+        name: 'Scooby catches monster',
+        orientation: 'h',
+        marker: {
+          color: 'blue',
+          width: 1
+        },
+        type: 'bar',
+        hovertemplate: '%{x:.0f}%'
+      };
+
+      const trace2 = {
+        x: scoobyCapturedPercent,
+        y: monster,
+        name: 'monster captures Scooby',
+        orientation: 'h',
+        marker: {
+          color: 'pink',
+          width: 1
+        },
+        type: 'bar',
+        hovertemplate: '%{x:.0f}%'
+      };
+
+      const traceData = [trace1, trace2];
+
+      // Define the layout for the horizontal bar chart with axis labels, chart title, and subtitle
+      const layout = {
+        title: {
+          text: "% of Each Monster Type that Scooby Catches, <br>and Captures Scooby",
+          font: { size: 20 },
+        },
+        xaxis: {
+          title: "Percentage",
+          tickformat: ',.0%',
+          range: [0, 100],
+          showgrid: false,
+          showticklabels: false
+        },
+        yaxis: {
+          title: "Monster Type",
+          automargin: true
+        },
+        barmode: 'stack',
+        margin: { t: 100, b: 130, l: 150, r: 150 },
+        height: '100%',
+        legend:{
+          y: -0.24,
+          yanchor: 'top',
+          orientation: 'h'
+        }
+      };
+
+
+      // Create the bar chart 
+      Plotly.newPlot("scooby-bar-chart", traceData, layout);
     });
 
 //shaggy's horizontal bar chart 
-const shaggyHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/shaggy_monster_analysis.csv")
+/*const shaggyHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/shaggy_monster_analysis.csv")
 .then(function (response) {
       return response.text();
     })
@@ -569,10 +817,88 @@ const shaggyHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.ama
         },
       });
     });
+    */
+
+    //shaggy's horizontal bar chart using plotly
+    d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminder_with_codes.csv", function (err, data) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      const monster = ['Animal','Ghost','Mythical','Possessed Object','Undead'];
+      const caughtColor = 'blue';
+      const capturedColor = 'pink';
+      const shaggyCaughtPercent = [47,60,44,38,60];
+      const shaggyCapturedPercent =[];
+      for (let i = 0; i < shaggyCaughtPercent.length; i++) {
+        shaggyCapturedPercent.push(100 - shaggyCaughtPercent[i]);
+      }
+
+      // define trace data for each bar
+      const trace1 = {
+        x: shaggyCaughtPercent,
+        y: monster,
+        name: 'Shaggy catches monster',
+        orientation: 'h',
+        marker: {
+          color: 'blue',
+          width: 1
+        },
+        type: 'bar',
+        hovertemplate: '%{x:.0f}%'
+      };
+
+      const trace2 = {
+        x: shaggyCapturedPercent,
+        y: monster,
+        name: 'monster captures Shaggy',
+        orientation: 'h',
+        marker: {
+          color: 'pink',
+          width: 1
+        },
+        type: 'bar',
+        hovertemplate: '%{x:.0f}%'
+      };
+
+      const traceData = [trace1, trace2];
+
+      // Define the layout for the horizontal bar chart with axis labels, chart title, and subtitle
+      const layout = {
+        title: {
+          text: "% of Each Monster Type that Shaggy Catches, <br>and Captures Shaggy",
+          font: { size: 20 },
+        },
+        xaxis: {
+          title: "Percentage",
+          tickformat: ',.0%',
+          range: [0, 100],
+          showgrid: false,
+          showticklabels: false
+        },
+        yaxis: {
+          title: "Monster Type",
+          automargin: true
+        },
+        barmode: 'stack',
+        margin: { t: 100, b: 130, l: 150, r: 150 },
+        height: '100%',
+        legend:{
+          y: -0.24,
+          yanchor: 'top',
+          orientation: 'h'
+        }
+      };
+
+
+      // Create the bar chart 
+      Plotly.newPlot("shaggy-bar-chart", traceData, layout);
+    });
 
 
 //velma's horizontal bar chart 
-const velmaHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/velma_monster_analysis.csv")
+/*const velmaHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/velma_monster_analysis.csv")
 .then(function (response) {
       return response.text();
     })
@@ -635,6 +961,91 @@ const velmaHorizontalBarChartData = fetch("https://nm2207.s3.ap-southeast-1.amaz
           }
         },
       });
+    });*/
+
+    //velma's horizontal bar chart using plotly
+    d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/gapminder_with_codes.csv", function (err, data) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      const monster = ['Animal','Ghost','Mythical','Possessed Object','Undead'];
+      const caughtColor = 'blue';
+      const capturedColor = 'pink';
+      const velmaCaughtPercent = [33,24,13,45,70];
+      const velmaCapturedPercent =[];
+      for (let i = 0; i < velmaCaughtPercent.length; i++) {
+        velmaCapturedPercent.push(100 - velmaCaughtPercent[i]);
+      }
+
+      //calculate average of velmaCaughtPercent
+      let sum = 0;
+      for (let i = 0; i < velmaCaughtPercent.length; i++){
+        sum += velmaCaughtPercent[i];
+      }
+      const average = sum/5;
+      console.log(average)
+
+      // define trace data for each bar
+      const trace1 = {
+        x: velmaCaughtPercent,
+        y: monster,
+        name: 'Velma catches monster',
+        orientation: 'h',
+        marker: {
+          color: 'blue',
+          width: 1
+        },
+        type: 'bar',
+        hovertemplate: '%{x:.0f}%'
+      };
+
+      const trace2 = {
+        x: velmaCapturedPercent,
+        y: monster,
+        name: 'monster captures Velma',
+        orientation: 'h',
+        marker: {
+          color: 'pink',
+          width: 1
+        },
+        type: 'bar',
+        hovertemplate: '%{x:.0f}%'
+      };
+
+      const traceData = [trace1, trace2];
+
+      // Define the layout for the horizontal bar chart with axis labels, chart title, and subtitle
+      const layout = {
+        title: {
+          text: "% of Each Monster Type that Velma Catches, <br>and Captures Velma",
+          font: { size: 20 },
+        },
+        xaxis: {
+          title: "Percentage",
+          tickformat: ',.0%',
+          range: [0, 100],
+          showgrid: false,
+          showticklabels: false
+        },
+        yaxis: {
+          title: "Monster Type",
+          automargin: true
+        },
+        barmode: 'stack',
+        margin: { t: 100, b: 130, l: 150, r: 150 },
+        height: '100%',
+        legend:{
+          y: -0.24,
+          yanchor: 'top',
+          orientation: 'h'
+        }
+      };
+
+
+      // Create the bar chart 
+      Plotly.newPlot("velma-bar-chart", traceData, layout);
     });
 
 
@@ -686,63 +1097,13 @@ const barChartData = fetch("https://nm2207.s3.ap-southeast-1.amazonaws.com/snack
         },
       });
     });
+    
 
 
-//conclusion 
-var daphneProperties = {
-  name: "daphne",
-  age: "16",
-  strength:"giving scooby snacks",
-  weakness:"xx"
-}
-var fredProperties = {
-  name: "fred",
-  age: "17",
-  strength:"yy",
-  weakness:"xx"
-}
-var scoobyProperties = {
-  name: "scooby",
-  age: "7",
-  strength:"yy",
-  weakness:"xx"
-}
-var shaggyProperties = {
-  name: "shaggy",
-  age: "17",
-  strength:"yy",
-  weakness:"xx"
-}
-var velmaProperties = {
-  name: "velma",
-  age: "15",
-  strength:"yy",
-  weakness:"xx"
-}
-
-
-function print_daphne_properties(){
-  var daphne_output_string = "Name: " + daphneProperties.name + "<br>" +
-                    "Age: " + daphneProperties.age + "<br>" +
-                    "Strength: " + daphneProperties.strength + "<br>" +
-                    "Weakness: " +daphneProperties.weakness + "<br>";
-  
-  document.getElementById("daphne_output").innerHTML = daphne_output_string;
-}
-
-
-/* single function to print all heroes properties
-function print_hero_properties(hero){
-  const hero_properties = hero + "Properties"
-  console.log(hero_properties);
-  const output_string = "Name: " + hero_properties.name + "<br>" +
-    "Age: " + hero_properties.age + "<br>" +
-    "Strength: " + hero_properties.strength + "<br>" +
-    "Weakness: " + hero_properties.weakness + "<br>";
-
-  const id_name = "\"" + hero + "_output" + "\"";
-  console.log(id_name);
-  console.log(output_string);
-  document.getElementById(id_name).innerHTML=output_string;
-}
-*/
+//conclusion cards
+const cards = document.querySelectorAll('.card_inner');
+cards.forEach(card => {
+  card.addEventListener('click', function(){
+    card.classList.toggle('is-flipped');
+  });
+});
