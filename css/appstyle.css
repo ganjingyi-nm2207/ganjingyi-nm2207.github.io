@@ -1,22 +1,96 @@
-@font-face {
-  font-family: 'spooky';
-  src: url(../resources/spooky-font/spooky.ttf);
-}
+/*imported fonts*/
+  @font-face {
+    font-family: 'monster-scratch';
+    src: url(../resources/monster-scratch-font/monster-scratch.ttf);
+  }
 
-@font-face {
-  font-family: 'monster-scratch';
-  src: url(../resources/monster-scratch-font/monster-scratch.ttf);
-}
+  @font-face {
+    font-family: 'museo-display';
+    src: url(../resources/museo/MuseoSansDisplay-Black.ttf);
+  }
 
-@font-face {
-  font-family: 'x-typewriter';
-  src: url(../resources/x-typewriter-font/x-typewriter.ttf);
-}
+  @font-face {
+    font-family: 'museo-light';
+    src: url(../resources/museo/MuseoSansDisplay-Light.ttf);
+  }
 
-@font-face {
-  font-family: 'x-typewriter-bold';
-  src: url(../resources/x-typewriter-font/x-typewriter-bold.ttf);
-}
+/*overall body styling*/
+  html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: linear-gradient(to bottom right, #f2eedd, #f9f4ed, #f2eedd);
+    background-attachment: local;
+    position:relative;
+    background-repeat: no-repeat;
+  }
+
+  #main-container {
+    position: relative;
+  }
+
+/*background overlays*/
+  .background-overlays {
+    position: absolute;
+    z-index: -1;
+    filter: grayscale(1) brightness(1.5);
+    opacity: 0.1;
+  }
+
+  /*positioning of individual overlay png
+    widths are set to a percentage of the container so they scale horizontally if the window is resized
+    vertical positions are set by absolute positioning*/
+    #shoeprint {
+      width: 20%;
+      max-width:200px;
+      left: 8%;
+      top: 1800px;
+      transform:rotate(-90deg)
+    }
+
+    #arrow {
+      width: 30%;
+      min-width:200px;
+      max-width:250px;
+      right: 5%;
+      top: 2000px;
+      transform: rotate(30deg);
+    }
+
+    #bats {
+      width: 30%;
+      min-width:200px;
+      max-width:300px;
+      left: 10%;
+      top: 25px;
+    }
+
+    #dust {
+      width: 1000px;
+      right:0;
+      top: 300px;
+    }
+
+    #dust-2 {
+      width: 100%;
+      right:0;
+      bottom: 0;
+      transform: rotate(180deg);
+    }
+
+
+    #thick-arrow {
+      width: 30%;
+      min-width:120px;
+      max-width:200px;
+      right: 5%;
+      top: 1400px;
+      transform:rotate(140deg)
+    }
+
 
 /*header styling*/
 header {
@@ -31,16 +105,17 @@ header {
 
 .header-image img {
   width: 100%;
-  height: auto;
+  height: auto; /*so the image is scaled proportionately even when window size is changed*/
   object-fit: cover;
 }
 
 .fade {
+  /*absolute positions to anchor it all the way to the bottom of the container, and taking up entire width of container*/
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)); /*fade effect to dark at the bottom*/
 }
 
 .header-text {
@@ -53,7 +128,7 @@ header {
   font-family: 'monster-scratch', sans-serif;
   text-transform: uppercase;
   text-align: center;
-  background: radial-gradient(ellipse at center, #79af30, #bb5c37);
+  background: radial-gradient(ellipse at center, #79af30, #bb5c37); /*elliptical gradient from green to brown*/
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -61,7 +136,7 @@ header {
   white-space: nowrap;
 }
 
-  /* Adjust font size for different viewport widths */
+  /* adjust font size for different viewport widths */
   @media screen and (max-width: 600px) {
     .header-text {
       font-size: 16px;
@@ -96,16 +171,15 @@ header {
   }
 
   nav .line {
-    height:2px;
+    height:1.5px;
     position: absolute;
     bottom: 0;
     left: 0;
-    background: black;
-    transition: all 0.3s ease;
+    background: rgb(30,30,29);
   }
   
   nav.animate .line{
-    transition: none;
+    transition: 0.1s; /*line moves to selected section over 0.1s*/
   }
 
   nav ul{
@@ -117,25 +191,26 @@ header {
 
   nav ul li{
     margin: 0 40px 0 0;
-    opacity: 0.4;
+    opacity: 0.4; /*lighter opacity when inactive*/
     transition: all 0.4s ease;
-    font-family: 'x-typewriter-bold', sans-serif;
+    font-family: 'museo-light', sans-serif;
   }
 
   nav ul li:hover {
-    opacity: 0.7;
+    opacity: 0.7; /*medium opacity when hovered*/
   }
 
   nav ul li.active {
-    opacity: 1;
+    opacity: 1; /*full opacity when selected*/
     
   }
 
   nav ul li:last-child {
-    margin-right: 0;
+    margin-right: 0; /*helps to center*/
   }
 
   nav ul li a{
+    /*text styling*/
     text-decoration: none;
     color: black;
     text-transform: uppercase;
@@ -146,62 +221,148 @@ header {
   }
 
 /*main section styling*/
-  main{
-    margin:5%;
-  }
-
-
-
-h2 {
-  font-family: 'spooky', sans-serif;
-  text-transform:uppercase;
+main{
+  margin:5%;
 }
 
-h4{
-  font-family: 'spooky', sans-serif;
+h2 {
+  font-family: 'museo-display', sans-serif;
+  text-transform:uppercase;
+  color: rgb(196,148,76);
+  font-size:28px;
+}
+
+.align-center{
+  text-align:center;
+}
+h3{
+  font-family: 'museo-display', sans-serif;
   text-transform:capitalize;
-  font-size:x-large;
+  color: rgb(130, 130, 129);
+  font-size:24px;
 }
 
 p {
-  font-family: 'x-typewriter', sans-serif;
-  font-size:smaller;
+  font-family: 'museo-light', sans-serif;
+  font-size:17px;
+  line-height:25px;
+  color:rgb(30, 30, 29);
 }
 
 /*hero profile gallery styling*/
-  .hero-profile-gallery{
-    display:flex;
-    justify-content: center;
+  #hero-profile-container{
+    position:relative;
+    width:100%;
+    height:500px;
+    margin-top:50px;
   }
 
-  .hero-landscape-images {
-    width: 3cm;
-    height: 3cm;
+  #dotted-circle{
+    position:absolute;
+    height:100%;
+    filter: grayscale(1) brightness(1.5);
+    opacity: 0.15;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right:auto;
   }
 
-  .hero-profile {
-    position: relative;
-    display: inline-block;
-    margin: 0;
-    box-sizing: border-box;
+  #hero-images-container{
+    position:absolute;
+    height:100%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:0px;
+
   }
 
-  .hero-profile-images-clipped {
-    position: absolute;
-    top: 0;
-    left: 0.02cm;
-    width:3cm;
-    height:3cm;
+  .hero-images {
+    width: 4cm;
+    height: 4cm;
+    border-radius: 50%;
+    filter: brightness(105%) contrast(110%);
+    transition: transform 0.3s ease;
+  }
+  
+  #daphne-image{
+    position:absolute;
+    top:-25px;
+    left:150px;
+  }
+
+  #fred-image{
+    position:absolute;
+    top:15px;
+    left:470px;
+  }
+
+  #scooby-image{
+    position:absolute;
+    top:200px;
+    right:-50px;
+  }
+
+  #shaggy-image{
+    position:absolute;
+    top:350px;
+    left:350px;
+  }
+
+  #velma-image{
+    position:absolute;
+    top:280px;
+    left:50px;
   }
 
   .description-sliders {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
+    position:absolute;
+    width: 480px;
+    left:200px;
+    top:180px;
+    opacity:0;
     overflow: hidden;
-    background-color: pink;
-    transition: height 0.3s ease;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  h4{
+    text-align:center;
+    font-family:'museo-display',sans-serif;
+    font-size:30px;
+    line-height:30px;
+    margin-top:10px;
+    margin-bottom:0px;
+    text-transform:uppercase;
+  }
+
+  .daphne-name{
+    color:#b94e7d;
+  }
+
+  .fred-name{
+    color:#2656AB;
+  }
+
+  .scooby-name{
+    color:#9d6750;
+  }
+
+  .shaggy-name{
+    color:#6CA84F;
+  }
+
+  .velma-name{
+    color:#b36a33;
+  }
+
+  .description-sliders p{
+    text-align:center;
+    font-size:15px;
+    line-height:18px;
+    margin-left:5px;
+    margin-right:5px;
   }
 
 /*top 5 monsters*/
@@ -217,6 +378,34 @@ p {
     flex: 1;
   }
 
+  /*top 5 monsters introduction*/
+  #monsters-introduction {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #monsters-introduction .monsters-introduction-list {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  #monsters-introduction .monsters-introduction-list p {
+    margin: 0;
+    padding-left: 45px;
+  }
+  
+  /* custom bullet bat image before (to the left of) each list item*/
+  #monsters-introduction .monsters-introduction-list:before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-image: url('../resources/images/bat.png');
+    background-size: contain;
+    position: absolute;
+    top: 6px;
+    left: 0px;
+  }
+  
 /*how heroes fare against top 5 common monsters*/
   #how-heroes-fare-top5-container {
     display: flex;
@@ -228,6 +417,10 @@ p {
 
   #how-heroes-fare-top5-text {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
   }
 
 /*slider styling*/
@@ -238,19 +431,19 @@ p {
   .slider {
     position: relative;
     width: 100%;
-    height: 700px;
+    height: 750px;
     overflow: hidden;
+    z-index:1;
   }
 
   .slide {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     margin:2%;
     opacity: 0;
     transition: opacity 0.5s ease;
+    z-index:2;
   }
 
   .slide.active {
@@ -264,6 +457,8 @@ p {
     align-items: center;
     margin:auto;
     bottom:0;
+    background-color:transparent;
+    
   }
 
   .arrow {
@@ -272,26 +467,45 @@ p {
     transform: translateY(-50%);
     width: 30px;
     height: 30px;
-    background-color: grey;
+    border: 1px solid black;
     border-radius: 50%;
     cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    z-index:3;
   }
-
+  
   .arrow-left {
     left: 20px;
+    background-image: url('../resources/images/left-arrow.png');
   }
-
+  
   .arrow-right {
     right: 20px;
+    background-image: url('../resources/images/right-arrow.png');
   }
+  
+  .arrow:hover {
+    filter: brightness(0) invert(1) grayscale(1) sepia(1) hue-rotate(30deg) brightness(0.5);
+    transition: filter 0.3s ease;
+
+  }
+  
+  .arrow:active {
+    filter: brightness(0) invert(1) grayscale(1) sepia(0.5) hue-rotate(200deg) brightness(1.2);
+  }
+  
 
   .dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
+    z-index:3;
+
   }
 
   .dot {
@@ -318,11 +532,10 @@ p {
   margin: 20px;
   width: 225px;
   height:320px;
-  perspective: 900px;
-  /*display: inline-block;
-  justify-content:center;*/
+  perspective: 900px; /*3d effect*/
 }
 
+/*change flex direction to column (arrange vertically) and align in center when screen width is less than 800px*/
 @media screen and (max-width: 800px) {
   .cards_container {
     flex-direction: column;
@@ -334,7 +547,7 @@ p {
   width:100%;
   height:100%;
   transition: transform 1s;
-  transform-style: preserve-3d;
+  transform-style: preserve-3d; 
   cursor: pointer;
   position: relative;
 }
@@ -356,7 +569,7 @@ p {
 
 .card_face_front{
   background-image: linear-gradient(to bottom right, #5a7880, #a7a991, #a35e44);
-  border:black solid 1.5px;
+  border:white solid 1.5px;
   display:flex;
   align-items:center;
   justify-content: center;
@@ -372,7 +585,7 @@ p {
 
 .card_face_back{
   transform:rotateY(180deg);
-  border:black solid 1.5px;
+  border:white solid 1.5px;
 
 }
 
@@ -413,19 +626,6 @@ p {
   margin-bottom:0;
 }
 
-/*.card_header:after{
-  content:'';
-  display:block;
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  z-index:-1;
-  border-radius: 0 0 50% 0;
-  background-image:linear-gradient(to bottom left, right 10%, pink 115%)
-}*/
-
 .card_header img{
   display:block;
   width:90px;
@@ -433,16 +633,17 @@ p {
   margin: 0 auto 20px;
   border-radius: 50%;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid white;
   object-fit:cover;
+  filter: brightness(110%) contrast(120%);
 }
 
 .card_header h3{
   color:white;
-  font-family:'spooky',Georgia, 'Times New Roman', Times, serif;
+  font-family:'museo-display',Georgia, 'Times New Roman', Times, serif;
   font-size:17px;
-  font-weight:900;
   text-transform: uppercase;
+  letter-spacing:1.05px;
   text-align:center;
   line-height:10px;
   margin-bottom:0;
@@ -483,28 +684,46 @@ p {
 }
 
 .card_face_back_list li h5{
-  font-family:'x-typewriter-bold',Georgia, 'Times New Roman', Times, serif;
-  line-height:15px;
+  font-family:'museo-light',Georgia, 'Times New Roman', Times, serif;
+  text-transform:uppercase;
+  letter-spacing:-0.1px;
+  line-height:16px;
+  font-size:15px;
   margin:0;
   padding-bottom:3px;
   padding-top:5px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  color:#F5F5F5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  color:white;
   text-align:center;
-
-
 }
 
 .card_face_back_list li p{
   line-height:15px;
   margin:0;
-  font-size:12px;
+  font-size:14px;
   word-spacing:0.3px;
-  letter-spacing:-0.5px;
+  letter-spacing:0.2px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  color:#e0e0e0;
+  color:#f5f5f5;
   text-align:center;
-
-
-
+  font-style:oblique 15deg;
 }
+
+/*diary entries page settings*/
+  .links{
+    color:#504538;
+  }
+
+  .links:visited{
+    color:#2CB089
+  }
+
+
+  .links:hover {
+    color: #C4944C;
+  }
+
+  .links:active {
+    color: #B7A99A;
+  }
+
