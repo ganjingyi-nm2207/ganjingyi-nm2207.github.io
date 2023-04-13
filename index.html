@@ -5,19 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/appstyle.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <!--preload font-->
+    <link rel="preload" href="museo-light.ttf" as="font" type="font/ttf" crossorigin>
     <script defer type="text/javascript" src="appscripts/main.js"> </script>
+    <!--load chart.js library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <!--load jQuery library-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--load d3.js library-->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+    <!--load plotly.js library-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!--for parsing csv data-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
 </head>
+
 <body>
 
 <header>
+    <!--header-->
     <div class="header-image">
+        <!--header image-->
         <img src="resources/images/header/header-image.jpeg">
+        <!--fade effect div container-->
         <div class="fade"></div>
+        <!--header title-->
         <div class="header-text">Scooby-Doo Crew Review</div>
     </div>
 </header>
@@ -25,139 +38,161 @@
 <nav>
     <!--navigation bar-->
     <div class="line"></div>
+    <!--unordered list for links to each section-->
     <ul>
       <li class="active"><a href="#dataStory">Data Story</a></li>
       <li><a href="#diaryEntries">Diary Entries</a></li>
     </ul>
 </nav>
 
-<main>
-    <section id="dataStory">
-    <!-- data story -->
-        <!--introduction, background, and motivation-->
-        <h2>Background</h2>
-        <!--introduce Scooby-doo franchise-->
-        <p>Since the original series “Scooby-Doo, Where Are You!” launched in 1969, the Scooby-Doo franchise has expanded into numerous television series and movies, with the latest series “Velma” premiering as of the time of writing, in March 2023.</p>
+<!--data story section -->
+<section id="dataStory">
 
-        <p>
+<!--background overlays, placed outside main section to avoid margin settings applied to main section-->
+<div id="main-container">
+    <img class="background-overlays" src="resources/images/background_overlays/shoeprint.png" id="shoeprint">
+    <img class="background-overlays" src="resources/images/background_overlays/arrow.png" id="arrow">
+    <img class="background-overlays" src="resources/images/background_overlays/bats.png" id="bats">
+    <img class="background-overlays" src="resources/images/background_overlays/dust_overlay.png" id="dust">
+    <img class="background-overlays" src="resources/images/background_overlays/thick_arrow.png" id="thick-arrow">
+    <img class="background-overlays" src="resources/images/background_overlays/dust-2.png" id="dust-2">
+
+    <main>
+
+        <!--introduce Scooby-doo franchise-->
+        <p class="align-center">Since the original series “Scooby-Doo, Where Are You!” launched in 1969, the Scooby-Doo franchise has expanded into numerous television series and movies, with the latest series “Velma” premiering as of the time of writing, in March 2023.</p>
+
+        <p class="align-center"> 
             The main premise of most series within the franchise revolves around the “Mystery Inc.” gang, comprising of the main characters Fred Jones, Daphne Blake, Velma Dinkley, Shaggy Rogers, and their talking Great Dane, Scooby-Doo. They travel around in their van, the Mystery Machine, to investigate spooky happenings and unmask the monsters behind them.
         </p>
+
+        <br>
         <br>
 
-        <hr>
-        <!--introduce five heroes here-->
-        <h2>The Crew</h2>
-        <div class="hero-profile-gallery">
-            <table>
-                <tr>
-                    <td id="daphne-profile" class="hero-profile" onmouseover="expandImage('daphne-clipped');discolorBackground('daphne-background');descriptionSlidein('daphne-description-slider')" onmouseout="shrinkImage('daphne-clipped');recolorBackground('daphne-background');descriptionSlideout('daphne-description-slider')">
-                        <img src="resources/images/hero_profile/daphne_landscape.jpeg" id="daphne-background" class="hero-landscape-images">
-                        <img src="resources/images/hero_profile/daphne_clipped.PNG" id="daphne-clipped" class="hero-profile-images-clipped">
-                    </td>
-                    <td id="fred-profile" class="hero-profile" onmouseover="expandImage('fred-clipped');discolorBackground('fred-background');descriptionSlidein('fred-description-slider')" onmouseout="shrinkImage('fred-clipped');recolorBackground('fred-background');descriptionSlideout('fred-description-slider')">
-                        <img src="resources/images/hero_profile/fred_landscape.jpeg" id="fred-background" class="hero-landscape-images">
-                        <img src="resources/images/hero_profile/fred_clipped.PNG" id="fred-clipped" class="hero-profile-images-clipped">
-                    </td>
-                    <td id="scooby-profile" class="hero-profile" onmouseover="expandImage('scooby-clipped');discolorBackground('scooby-background');descriptionSlidein('scooby-description-slider')" onmouseout="shrinkImage('scooby-clipped');recolorBackground('scooby-background');descriptionSlideout('scooby-description-slider')">
-                        <img src="resources/images/hero_profile/scooby_landscape.jpeg" id="scooby-background" class="hero-landscape-images">
-                        <img src="resources/images/hero_profile/scooby_clipped.PNG" id="scooby-clipped" class="hero-profile-images-clipped">
-                    </td>
-                    <td id="shaggy-profile" class="hero-profile" onmouseover="expandImage('shaggy-clipped');discolorBackground('shaggy-background');descriptionSlidein('shaggy-description-slider')" onmouseout="shrinkImage('shaggy-clipped');recolorBackground('shaggy-background');descriptionSlideout('shaggy-description-slider')">
-                        <img src="resources/images/hero_profile/shaggy_landscape.jpeg" id="shaggy-background" class="hero-landscape-images">
-                        <img src="resources/images/hero_profile/shaggy_clipped.PNG"  id="shaggy-clipped" class="hero-profile-images-clipped">
-                    </td>
-                    <td id="velma-profile" class="hero-profile" onmouseover="expandImage('velma-clipped');discolorBackground('velma-background');descriptionSlidein('velma-description-slider')" onmouseout="shrinkImage('velma-clipped');recolorBackground('velma-background');descriptionSlideout('velma-description-slider')">
-                        <img src="resources/images/hero_profile/velma_landscape.png" id="velma-background" class="hero-landscape-images">
-                        <img src="resources/images/hero_profile/velma_clipped.PNG" id="velma-clipped"class="hero-profile-images-clipped">
-                    </td>
-                </tr>
-            </table>
+        <!--introduce five heroes-->
+        <h2 class="align-center">The Crew</h2>
+        <p class="align-center">Hover over the images to find out more about each hero!</p>
+
+        <!--container for hero roadmap-->
+        <div id="hero-profile-container">
+            <!--dotted circle image-->
+            <img src="resources/images/dotted_circle.png" id="dotted-circle">
+            <!--5 images, one for each hero, each calls for 1) image expand/shrink function, 2) description appear/disappear function, 3)discolor and recolor images function, respectively when mouse enters and leaves each image-->
+            <div id="hero-images-container">
+                <!--daphne-->
+                <img src="resources/images/hero_profile/daphne.jpg" id="daphne-image" class="hero-images" 
+                    onmouseenter="expandImage('daphne-image');descriptionFadein('daphne-description-slider');discolorOtherImages('fred-image','scooby-image','shaggy-image','velma-image')"
+                    onmouseleave="shrinkImage('daphne-image');descriptionFadeout('daphne-description-slider');recolorAllImages('hero-images')">
+                <!--fred-->
+                    <img src="resources/images/hero_profile/fred.JPG" id="fred-image" class="hero-images" 
+                    onmouseenter="expandImage('fred-image');descriptionFadein('fred-description-slider');discolorOtherImages('daphne-image','scooby-image','shaggy-image','velma-image')" 
+                    onmouseleave="shrinkImage('fred-image');descriptionFadeout('fred-description-slider');recolorAllImages('hero-images')">
+                <!--scooby-->
+                <img src="resources/images/hero_profile/scooby.JPG" id="scooby-image" class="hero-images" 
+                    onmouseenter="expandImage('scooby-image');descriptionFadein('scooby-description-slider');discolorOtherImages('fred-image','daphne-image','shaggy-image','velma-image')" 
+                    onmouseleave="shrinkImage('scooby-image');descriptionFadeout('scooby-description-slider');recolorAllImages('hero-images')">
+                <!--shaggy-->
+                <img src="resources/images/hero_profile/shaggy.JPG" id="shaggy-image" class="hero-images" 
+                    onmouseenter="expandImage('shaggy-image');descriptionFadein('shaggy-description-slider');discolorOtherImages('fred-image','scooby-image','daphne-image','velma-image')" 
+                    onmouseleave="shrinkImage('shaggy-image');descriptionFadeout('shaggy-description-slider');recolorAllImages('hero-images')">
+                <!--velma-->
+                <img src="resources/images/hero_profile/velma.JPG" id="velma-image" class="hero-images" 
+                    onmouseenter="expandImage('velma-image');descriptionFadein('velma-description-slider');discolorOtherImages('fred-image','scooby-image','shaggy-image','daphne-image')" 
+                    onmouseleave="shrinkImage('velma-image');descriptionFadeout('velma-description-slider');recolorAllImages('hero-images')">
+                <!--container for appearing and disappearing hero descriptions, each containing div for description details for the corresponding hero-->
+                <div id="description-slider-container">
+                    <!--daphne description div-->
+                    <div id="daphne-description-slider" class="description-sliders">
+                        <h4 class="daphne-name">Daphne Blake</h4>
+                        <p>Daphne exudes effortless cool with her fashion sense that's always on point and razor-sharp wit. Her intelligence is just as striking as her beauty, and she's unafraid to take charge when things get tough. When the gang is on the lookout for clues, Daphne is quick to spot anything that might help them unravel their latest mystery.</p>
+                    </div>
+                    <!--fred description div-->
+                    <div id="fred-description-slider" class="description-sliders">
+                        <h4 class="fred-name">Fred Jones</h4>
+                        <p>Confident and suave, Fred is always ready to lead the gang to victory. His trusty ascot is a symbol of his resourcefulness, and his mastery of gadgets always comes in handy. When the gang needs a plan, Fred is their go-to guy, relying on his quick thinking and problem-solving skills to get the job done.</p>
+                    </div>
+                    <!--scooby description div-->
+                    <div id="scooby-description-slider" class="description-sliders">
+                        <h4 class="scooby-name">Scooby-Doo</h4>
+                        <p>Scooby-Doo is the heart and soul of the gang, with his lovable goofiness and never-ending appetite for Scooby Snacks. His loyalty to his friends knows no bounds, and he's always willing to put himself in harm's way to help out.</p>
+                    </div>
+                    <!--shaggy description div-->
+                    <div id="shaggy-description-slider" class="description-sliders">
+                        <h4 class="shaggy-name">Shaggy Rogers</h4>
+                        <p>Despite his laid-back attitude and love of food, Shaggy is always ready to step up and do what's right. His unflappable courage and resourcefulness have saved the gang from countless scrapes, proving that sometimes, even the most unlikely heroes can rise to the occasion. When the going gets tough, Shaggy's bravery shines through.</p>
+                    </div>
+                    <!--velma description div-->
+                    <div id="velma-description-slider" class="description-sliders">
+                        <h4 class="velma-name">Velma Dinkley</h4>
+                        <p>With her signature orange turtleneck and thick glasses, Velma is the brains behind the gang. Her sharp eye for detail and quick thinking have saved them from countless dangerous situations. Velma's dry wit always keeps things interesting, and she's always one step ahead of the bad guys, proving that brains can be just as important as brawn.</p>
+                    </div>
+                </div>       
+            </div>
         </div>
 
-        <div id="description-slider-container">
-            <div id="daphne-description-slider" class="description-sliders">
-                <h4>Daphne Blake</h4>
-                <p>Daphne exudes effortless cool with her fashion sense that's always on point and razor-sharp wit. Her intelligence is just as striking as her beauty, and she's unafraid to take charge when things get tough. When the gang is on the lookout for clues, Daphne is quick to spot anything that might help them unravel their latest mystery.</p>
-            </div>
-            <div id="fred-description-slider" class="description-sliders">
-                <h4>Fred Jones</h4>
-                <p>Confident and suave, Fred is always ready to lead the gang to victory. His trusty ascot is a symbol of his resourcefulness, and his mastery of gadgets always comes in handy. When the gang needs a plan, Fred is their go-to guy, relying on his quick thinking and problem-solving skills to get the job done.</p>
-            </div>
-            <div id="scooby-description-slider" class="description-sliders">
-                <h4>Scooby-Doo</h4>
-                <p>Scooby Doo is the heart and soul of the gang, with his lovable goofiness and never-ending appetite for Scooby Snacks. His loyalty to his friends knows no bounds, and he's always willing to put himself in harm's way to help out. Scooby may not be the smartest member of the group, but his bravery and quick thinking have saved the day more times than anyone can count.</p>
-            </div>
-            <div id="shaggy-description-slider" class="description-sliders">
-                <h4>Shaggy Rogers</h4>
-                <p>Despite his laid-back attitude and love of food, Shaggy is always ready to step up and do what's right. His unflappable courage and resourcefulness have saved the gang from countless scrapes, proving that sometimes, even the most unlikely heroes can rise to the occasion. When the going gets tough, Shaggy's bravery shines through.</p>
-            </div>
-            <div id="velma-description-slider" class="description-sliders">
-                <h4>Velma</h4>
-                <p>With her signature orange turtleneck and thick glasses, Velma is the brains behind the gang. Her sharp eye for detail and quick thinking have saved them from countless dangerous situations. Velma's dry wit always keeps things interesting, and she's always one step ahead of the bad guys, proving that brains can be just as important as brawn.</p>
-            </div>
+        <br>
 
-        </div>
+        <!--motivation of data story-->
+        <p class="align-center">
+            The franchise has remained popular with audiences of all ages for over 50 years, and each of the five heroes have become some of the most popular characters in Western media. In particular, their strong friendships and ability to work as a team to solve mysteries and fight crime is at the heart and soul of its popularity.
+        </p>
 
-        <hr>   
-        <h2>Motivation</h2>
-            <p>
-                The franchise has remained popular with audiences of all ages for over 50 years, and each of the five heroes have become some of the most popular characters in Western media. In particular, their strong friendships and ability to work as a team to solve mysteries and fight crime is at the heart and soul of its popularity.
-            </p>
+        <p class="align-center">
+            While all viewers have their favourites, each hero has something unique to bring to the table, and it is the purpose of this data story to uncover the unique qualities of each hero.
+        </p>
 
-            <p>
-                While all viewers have their favourites, each hero has something unique to bring to the table, and it is the purpose of this data story to uncover the unique qualities of each hero.
-            </p>
-            <br>
+        <br>
         
-        <hr>
-        <h2>The Dataset</h2>
-            <p>introduction of dataset here</p>
-
-            <p>
+        <!--introduction of dataset-->
+        <h2 class="align-center"> The Dataset</h2>
+            <p class="align-center">
                 The dataset used here is <a href="https://www.kaggle.com/datasets/williamschooleman/scoobydoo-complete">Scooby-Doo Complete</a> by @plummye on Kaggle. The creator spent about a year watching every Scooby-Doo iteration, to produce this dataset containing 603 records, each tracking 75 variables, from iterations aired over 53 years (from 1969 to 2021).
             </p>
-            <br>
 
-        <hr>
-        <!--point 1: general picture of how heroes fare against monsters-->
-        <h2>The Scooby-Doo Crew Against Monsters</h2>
-            <h3>Top 5 Common Types of Monsters</h3>
+        <br>
+        <br>
+
+        <!--the scooby doo crew against monsters-->
+        <h2 class="align-center">The Scooby-Doo Crew Against Monsters</h2>
+            <h3 class="align-center">Top 5 Common Types of Monsters</h3>
+            <!--top 5 common monsters-->
             <div id="top5-monsters-container">
-                <!--top 5 common monsters-->
+                <!--top 5 common monsters text portion-->
                 <div id="top5-monsters-text">
                     <p>This section examines how the Scooby-Doo crew performs against different types of monsters. To make the analysis more accurate, we will concentrate on the top 5 most frequent monster types among the 12 present in the series and movies. These top 5 types, which are Animal, Ghost, Mythical, Possessed Object, and Undead, were determined from a donut chart.</p>
-                    <ul>
-                        <li>
+                    <!--unordered list to briefly talk about each type of monster-->
+                    <ul id="monsters-introduction">
+                        <li class="monsters-introduction-list">
                             <p>
-                            Animal type monsters are usually portrayed as big and ferocious creatures, such as a werewolf or a giant snake.
+                            <b>Animal type</b> monsters are usually portrayed as big and ferocious creatures, such as a werewolf or a giant snake.
                             </p>
                         </li>
-                        <li>
+                        <li class="monsters-introduction-list">
                             <p>
-                            Ghost type monsters are one of the most iconic monsters, They are often portrayed as translucent, floating beings with supernatural powers such as disappearing at will.
+                            <b>Ghost type</b> monsters are one of the most iconic monsters. They are often portrayed as translucent, floating beings with supernatural powers such as disappearing at will.
                             </p>
                         </li>
-                        <li>
+                        <li class="monsters-introduction-list">
                             <p>
-                            Mythical type monsters are usually based on mythical creatures from various cultures, such as dragons, or centaurs. They often have unique abilities or weaknesses that make them difficult to catch.
+                            <b>Mythical type</b> monsters are usually based on mythical creatures from various cultures, such as dragons, or centaurs. They often have unique abilities or weaknesses that make them difficult to catch.
                             </p>
                         </li>
-                        <li>
+                        <li class="monsters-introduction-list">
                             <p>
-                            Possessed Object type monsters are usually inanimate objects, such as a suit of armor or a puppet, that are animated by a supernatural force. They can be difficult to catch because they are often small and agile, and can move unpredictably.
+                            <b>Possessed Object type</b> monsters are usually inanimate objects, such as a suit of armor or a puppet, that are animated by a supernatural force. They can be difficult to catch because they are often small and agile, and can move unpredictably.
                             </p>
                         </li>
-                        <li>
+                        <li class="monsters-introduction-list">
                             <p>
-                            Undead type monsters are usually portrayed as zombies, vampires, or mummies. They are often slow-moving and physically strong, and may be able to turn others into undead creatures.
+                            <b>Undead type</b> monsters are usually portrayed as zombies, vampires, or mummies. They are often slow-moving and physically strong, and may be able to turn others into undead creatures.
                             </p>
                         </li>
                     </ul>
                 </div>
                 <div id="top5-monsters-chart">
-                    <!--simple donut chart showing top 5 monsters, canvas container-->
+                    <!--canvas container for top 5 monsters donut chart-->
                     <div id="canvas-container">
-                        <canvas id="donut-chart" width="400" height="400"></canvas>
+                        <canvas id="donut-chart" width="400" height="500"></canvas>
                     </div>
                 </div>
             </div>
@@ -165,15 +200,16 @@
 
             <br>
 
-            <!--radar chart-->
-            <h3>How the Heroes Fare Against the Top 5 Common Monsters</h3>
+            <!--general picture of how the heroes fare against the top 5 common monsters-->
+            <h3 class="align-center">How the Heroes Fare Against the Top 5 Common Monsters</h3>
                 <div id="how-heroes-fare-top5-container">
                     <div id="how-heroes-fare-top5-chart">
                         <!--radar chart canvas container-->
                         <div id="canvas-container">
-                            <canvas id="radar-chart" width="400" height="400"></canvas>
+                            <canvas id="radar-chart" width="500" height="500"></canvas>
                         </div>
                     </div>
+                    <!--text portion-->
                     <div id="how-heroes-fare-top5-text">
                         <p>A radar chart is used to obtain an overview of how each hero performs against the top 5 common types of monsters. The chart displays the strength of five heroes - Scooby, Fred, Shaggy, Velma, and Daphne - against five common types of monsters, including Animal, Ghost, Mythical, Possessed Object, and Undead. Each axis on the chart represents a monster type, and each data point represents the hero's strength against that monster type.</p>
                         <p>The values depicted in the chart are determined by subtracting the number of times the monster captured the hero from the number of times the hero has caught the monster. This calculation can be interpreted as the hero's overall effectiveness against the monster.</p>
@@ -181,74 +217,77 @@
                     </div>
                 </div>
 
+            <br>
 
-            <h3>A Deeper Analysis into each Hero</h3>
-                <p>In this analysis, we will delve deeper into each hero's capabilities. To do so, we will use a horizontal bar chart for each hero, which shows the rate at which they catch a particular type of monster, as well as the rate at which they are captured by that monster.</p>
-                <p>While the earlier radar chart provides a net strength score for each hero against each monster type, it has a unit in terms of the number of monsters caught or captured, which can be problematic. For instance, as we saw in the donut chart, ghosts were the most common type of monster, and as a result, the radar chart suggested that almost every crew member was proficient in catching ghosts. However, this is an unfair comparison as it doesn't account for the fact that there were more ghosts to catch than other types of monsters.</p>
-                <p>To address this issue, the horizontal bar chart standardizes the number of monsters to 100% and presents the rates as a percentage of the total. This allows for a fair comparison across all monster types, enabling us to compare each character's abilities against different monsters.</p>
-                <!--gallery view, 5 views, one for each hero-->
+            <!--deeper analysis into how each hero fares against monsters, contains a slider with 5 slides, each pertaining to each hero-->
+            <h3 class="align-center">A Deeper Analysis into each Hero</h3>
+                <!--overview text-->
+                <p class="align-center">In this analysis, we will delve deeper into each hero's capabilities. To do so, we will use a horizontal bar chart for each hero, which shows the rate at which they catch a particular type of monster, as well as the rate at which they are captured by that monster.</p>
+                <p class="align-center">While the earlier radar chart provides a net strength score for each hero against each monster type, it has a unit in terms of the number of monsters caught or captured, which can be problematic. For instance, as we saw in the donut chart, ghosts were the most common type of monster, and as a result, the radar chart suggested that almost every crew member was proficient in catching ghosts. However, this is an unfair comparison as it doesn't account for the fact that there were more ghosts to catch than other types of monsters.</p>
+                <p class="align-center">To address this issue, the horizontal bar chart standardizes the number of monsters to 100% and presents the rates as a percentage of the total. This allows for a fair comparison across all monster types, enabling us to compare each character's abilities against different monsters.</p>
+                
+                <!--slider with 5 slides, one for each hero-->
                 <div class="slider">
-                    
-                    <!--daphne-->
+                    <!--daphne's slide-->
                     <div class="slide">
-                        <h4>Daphne</h4>
+                        <h4 class="daphne-name">Daphne Blake</h4>
                         <!--daphne's description-->
-                        <p>Daphne's catching ability is relatively weak, with a catch rate of less than 50% for all monster types. This means her chances of being captured are higher than her chances of catching monsters. Nonetheless, she performs better with mythical and undead monsters than with animal and ghost types.</p>
-                        <p>It's possible that Daphne's weakness in catching monsters as a whole is due to her personality traits, such as being easily frightened or lacking the necessary skills.</p>
-                        <!--daphne's horizontal bar chart-->
+                        <p class="align-center">Daphne's catching ability is relatively weak, with a catch rate of less than 50% for all monster types. This means her chances of being captured are higher than her chances of catching monsters. Nonetheless, she performs better with mythical and undead monsters than with animal and ghost types.</p>
+                        <p class="align-center">It's possible that Daphne's weakness in catching monsters as a whole is due to her personality traits, such as being easily frightened or lacking the necessary skills.</p>
+                        <!--daphne's horizontal bar chart div for plotly chart-->
                         <div id="daphne-bar-chart" class="horizontal-bar-chart"></div>
                         <br>
                     </div>
 
-
-                    <!--fred-->
+                    <!--fred's slide-->
                     <div class="slide">
-                        <h4>Fred</h4>
+                        <h4 class="fred-name">Fred Jones</h4>
                         <!--fred's description-->
-                        <p>Fred is one of the strongest members, with a catch rate of over 50% for all monster types, and a capture rate below 50%. He excels in catching ghost, animal, and mythical monsters, but his weakness lies in dealing with undead types, although he still is considered pretty competent at that.</p>
-                        <p>Fred's strong performance across all monster types may be due to his leadership skills and ability to come up with effective plans. His weakness with undead types may be because those monsters are more difficult to capture, or because he hasn't had as much experience dealing with them.</p>
-                        <!--fred's horizontal bar chart-->
+                        <p class="align-center">Fred is one of the strongest members, with a catch rate of over 50% for all monster types, and a capture rate below 50%. He excels in catching ghost, animal, and mythical monsters, but his weakness lies in dealing with undead types, although he still is considered pretty competent at that.</p>
+                        <p class="align-center">Fred's strong performance across all monster types may be due to his leadership skills and ability to come up with effective plans. His weakness with undead types may be because those monsters are more difficult to capture, or because he hasn't had as much experience dealing with them.</p>
+                        <!--fred's horizontal bar chart div for plotly chart-->
                         <div id="fred-bar-chart" class="horizontal-bar-chart"></div>
                         <br>
                     </div>
 
-                    
-                    <!--scooby-->
+                    <!--scooby's slide-->
                     <div class="slide">
-                        <h4>Scooby</h4>
+                        <h4 class="scooby-name">Scooby-Doo</h4>
                         <!--scooby's description-->
-                        <p>Scooby is the strongest member, with the highest catch rate across all monsters. He shows little variability between the different monsters and performs equally well against all types, which may come as a surprise since he is known for being a scaredy-cat.</p>
-                        <p>Scooby's impressive performance in catching all types of monsters may seem surprising, considering his reputation as a scaredy-cat. However, it is important to note that Scooby is highly motivated by food, especially his beloved Scooby Snacks. This may have given him the extra courage and determination needed to catch even the most frightening monsters.</p>
-                        <!--scooby's horizontal bar chart-->
+                        <p class="align-center">Scooby is the strongest member, with the highest catch rate across all monsters. He shows little variability between the different monsters and performs equally well against all types, which may come as a surprise since he is known for being a scaredy-cat.</p>
+                        <p class="align-center">Scooby's impressive performance in catching all types of monsters may seem surprising, considering his reputation as a scaredy-cat. However, it is important to note that Scooby is highly motivated by food, especially his beloved Scooby Snacks. This may have given him the extra courage and determination needed to catch even the most frightening monsters.</p>
+                        <!--scooby's horizontal bar chart div for plotly chart-->
                         <div id="scooby-bar-chart" class="horizontal-bar-chart"></div>
                         <br>
                     </div>
 
-                    <!--shaggy-->
+                    <!--shaggy's slide-->
                     <div class="slide">
-                    <h4>Shaggy</h4>
+                    <h4 class="shaggy-name">Shaggy Rogers</h4>
                         <!--shaggy's description-->
-                        <p>Shaggy's performance is in the middle range among the crew. He is good at catching ghosts and undead types. However, he struggles with possessed objects, with a performance on par with Daphne's and lower than Velma's, Fred's, and Scooby's.</p>
-                        <p>Shaggy's performance being in the middle range could be due to him not being as skilled as Fred or Scooby, but also not as easily frightened as Daphne.</p>
-                        <!--shaggy's horizontal bar chart-->
+                        <p class="align-center">Shaggy's performance is in the middle range among the crew. He is good at catching ghosts and undead types. However, he struggles with possessed objects, with a performance on par with Daphne's and lower than Velma's, Fred's, and Scooby's.</p>
+                        <p class="align-center">Shaggy's performance being in the middle range could be due to him not being as skilled as Fred or Scooby, but also not as easily frightened as Daphne.</p>
+                        <!--shaggy's horizontal bar chart div for plotly chart-->
                         <div id="shaggy-bar-chart" class="horizontal-bar-chart"></div>
                         <br>
                     </div>
 
-                    <!--velma-->
+                    <!--velma's slide-->
                     <div class="slide">
-                        <h4>Velma</h4>
+                        <h4 class="velma-name">Velma Dinkley</h4>
                         <!--velma's description-->
-                        <p>Velma's performance shows the most variability among the crew. She is particularly good at catching undead types, outperforming all other members except Scooby. However, she has a clear weakness with mythical and ghost types, where she performs the worst among the crew.</p>
-                        <p>Velma's performance may vary more than the others because she relies heavily on her intelligence and problem-solving skills. Her weakness with mythical and ghost types may be because those monsters are less tangible and harder to analyze, whereas her strength with undead types could be because she's able to come up with creative solutions for capturing them.</p>
-                        <!--velma's horizontal bar chart-->
+                        <p class="align-center">Velma's performance shows the most variability among the crew. She is particularly good at catching undead types, outperforming all other members except Scooby. However, she has a clear weakness with mythical and ghost types, where she performs the worst among the crew.</p>
+                        <p class="align-center">Velma's performance may vary more than the others because she relies heavily on her intelligence and problem-solving skills. Her weakness with mythical and ghost types may be because those monsters are less tangible and harder to analyze, whereas her strength with undead types could be because she's able to come up with creative solutions for capturing them.</p>
+                        <!--velma's horizontal bar chart div for plotly chart-->
                         <div id="velma-bar-chart" class="horizontal-bar-chart"></div>
                         <br>
                     </div>
 
-                    <div class="arrow arrow-left"></div>
-                    <div class="arrow arrow-right"></div>
+                    <!--divs for left and right arrows, and 5 dots-->
+                    <div class="arrow arrow-left" id="arrow-left"></div>
+                    <div class="arrow arrow-right" id="arrow-right"></div>
                     <div class="dots">
+                    <!--the first dot takes on the active class by default-->
                     <span class="dot active"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
@@ -257,40 +296,52 @@
                     </div>
                 </div>
 
-            <hr>
-            <!--point 3: analysis of each character with scooby snacks-->
-            <h2>"Would you do it for a Scooby Snack?"</h2>
-                <p>Scooby will do anything for a Scooby Snack. These snacks are often used as an incentive by the four human heroes to convince Scooby-Doo to participate in dangerous or frightening schemes, such as acting as bait for a monster, helping to solve the mystery in the end.</p>
-                <p>Interestingly, Daphne, who had the lowest success rate in catching monsters and avoiding being captured, is the most generous when it comes to offering Scooby snacks, giving him a total of 49 throughout the show. These snacks proved to be essential in eventually capturing the monster.</p>
-                <p>Shaggy, who is Scooby's owner and best friend, comes in second place, having given Scooby 43 snacks. Shaggy is well-known for his love of food and often shares his meals with Scooby, including the coveted Scooby snacks.</p>
-                <p>On the other hand, Fred is the least generous when it comes to giving Scooby snacks. While there is no official explanation for this, it is possible that as the leader of the group, Fred takes his responsibilities seriously and wants to ensure that Scooby remains focused on the task at hand. Additionally, Fred is often portrayed as being physically fit and may not want to encourage Scooby's fondness for food.</p>
-                <p>It is worth noting that Scooby also occasionally rewards himself with snacks to motivate himself, albeit rarely.</p>
-                <!--chart canvas container-->
+                <br>
+                <br>
+
+            <!--analysis of each character with scooby snacks-->
+            <h2 class="align-center">"Would you do it for a Scooby Snack?"</h2>
+                <!--text portion-->
+                <p class="align-center">Scooby will do anything for a Scooby Snack. These snacks are often used as an incentive by the four human heroes to convince Scooby-Doo to participate in dangerous or frightening schemes, such as acting as bait for a monster, helping to solve the mystery in the end.</p>
+                <p class="align-center">Interestingly, Daphne, who had the lowest success rate in catching monsters and avoiding being captured, is the most generous when it comes to offering Scooby snacks, giving him a total of 49 throughout the show. These snacks proved to be essential in eventually capturing the monster. Shaggy, who is Scooby's owner and best friend, comes in second place, having given Scooby 43 snacks. Shaggy is well-known for his love of food and often shares his meals with Scooby, including the coveted Scooby snacks. On the other hand, Fred is the least generous when it comes to giving Scooby snacks. While there is no official explanation for this, it is possible that as the leader of the group, Fred takes his responsibilities seriously and wants to ensure that Scooby remains focused on the task at hand. Additionally, Fred is often portrayed as being physically fit and may not want to encourage Scooby's fondness for food. It is worth noting that Scooby also occasionally rewards himself with snacks to motivate himself, albeit rarely.</p>
+                <!--bar chart canvas container-->
                 <div id="canvas-container">
                     <canvas id="snacks-chart" width="400" height="400"></canvas>
                 </div>
             
-            <hr>
-            <!--conclusion: each hero's strength and weakness-->
-            <h2>Conclusion</h2>
-            <p>present conclusions on the strengths and weaknesses of each hero (something like a pokemon card)</p>
+            <br>
+            <br>
+
+            <!--conclusion-->
+            <!--text portion-->
+            <h2 class="align-center">Jinkies! Moment</h2>
+            <p class="align-center">Congratulations! We've finally arrived at our 'Jinkies moment', as Velma would say. Now, it's time to piece together all the clues we've gathered.</p>
+            <p class="align-center">Ready to unveil the secrets of Mystery Inc.? Click on the cards below to find out!</p>
+
+            <!--container for 5 cards-->
             <div class="cards_container">
                 <!--daphne's card-->
                 <div class="card">
                     <div class="card_inner">
+                        <!--front side of daphne's card-->
                         <div class="card_face card_face_front">
                             <h3>Daphne</h3>
                         </div>
+                        <!--back side of daphne's card-->
                         <div class="card_face card_face_back card_face_back_daphne">
                             <div class="card_content">
+                                <!--header section of back side of daphne's card-->
                                 <div class="card_header">
                                     <div class="card_face_back_image">
+                                        <!--daphne's image-->
                                         <img src="resources/images/hero_profile/daphne.jpg">
                                     </div>
                                     <h3>Daphne Blake</h3>
                                 </div>
+                                <!--body section of back side of daphne's card-->
                                 <div class="card_body">
                                     <div class="card_face_back_list">
+                                        <!--unordered list for daphne's strength and weakness-->
                                         <ul>
                                             <li>
                                                 <h5>Snack Savant</h5>
@@ -307,22 +358,29 @@
                         </div>
                     </div>
                 </div>
+
                 <!--fred's card-->
                     <div class="card">
                         <div class="card_inner">
+                            <!--front side of fred's card-->
                             <div class="card_face card_face_front">
                                 <h3>Fred</h3>
                             </div>
+                            <!--back side of fred's card-->
                             <div class="card_face card_face_back card_face_back_fred">
                                 <div class="card_content">
+                                    <!--header of back side of fred's card-->
                                     <div class="card_header">
+                                        <!--fred's image-->
                                         <div class="card_face_back_image">
                                             <img src="resources/images/hero_profile/fred.JPG">
                                         </div>
                                         <h3>Fred Jones</h3>
                                     </div>
+                                    <!--body of back side of fred's card-->
                                     <div class="card_body">
                                         <div class="card_face_back_list">
+                                            <!--unordered list of fred's strength and weakness-->
                                             <ul>
                                                 <li>
                                                     <h5>Monster Master</h5>
@@ -339,22 +397,28 @@
                             </div>
                         </div>
                     </div>
+
                 <!--scooby's card-->
                 <div class="card">
                     <div class="card_inner">
+                        <!--front side of scooby's card-->
                         <div class="card_face card_face_front">
                             <h3>Scooby</h3>
                         </div>
+                        <!--back side of scooby's card-->
                         <div class="card_face card_face_back card_face_back_scooby">
                             <div class="card_content">
+                                <!--header of back side of scooby's card-->
                                 <div class="card_header">
                                     <div class="card_face_back_image">
                                         <img src="resources/images/hero_profile/scooby.JPG">
                                     </div>
                                     <h3>Scooby-Doo</h3>
                                 </div>
+                                <!--body of back side of scooby's card-->
                                 <div class="card_body">
                                     <div class="card_face_back_list">
+                                        <!--unordered list of scooby's strength and weakness-->
                                         <ul>
                                             <li>
                                                 <h5>Monster Master</h5>
@@ -371,22 +435,28 @@
                         </div>
                     </div>
                 </div>
+
                 <!--shaggy's card-->
                 <div class="card">
                     <div class="card_inner">
+                        <!--front side of shaggy's card-->
                         <div class="card_face card_face_front">
                             <h3>Shaggy</h3>
                         </div>
+                        <!--back side of shaggy's card-->
                         <div class="card_face card_face_back card_face_back_shaggy">
                             <div class="card_content">
+                                <!--header of back side of shaggys card-->
                                 <div class="card_header">
                                     <div class="card_face_back_image">
                                         <img src="resources/images/hero_profile/shaggy.JPG">
                                     </div>
                                     <h3>Shaggy Rogers</h3>
                                 </div>
+                                <!--body of back side of shaggys card-->
                                 <div class="card_body">
                                     <div class="card_face_back_list">
+                                        <!--unordered list of shaggys strength and weakness-->
                                         <ul>
                                             <li>
                                                 <h5>Ghost & Ghoul Getter</h5>
@@ -403,22 +473,28 @@
                         </div>
                     </div>
                 </div>
+
                 <!--velma's card-->
                 <div class="card">
                     <div class="card_inner">
+                        <!--front side of velma's card-->
                         <div class="card_face card_face_front">
                             <h3>Velma</h3>
                         </div>
+                        <!--back side of velma's card-->
                         <div class="card_face card_face_back card_face_back_velma">
                             <div class="card_content">
+                                <!--header of back side of velma's card-->
                                 <div class="card_header">
                                     <div class="card_face_back_image">
                                         <img src="resources/images/hero_profile/velma.JPG">
                                     </div>
                                     <h3>Velma Dinkley</h3>
                                 </div>
+                                <!--body of back side of velma's card-->
                                 <div class="card_body">
                                     <div class="card_face_back_list">
+                                        <!--unordered list of velma's strength and weakness-->
                                         <ul>
                                             <li>
                                                 <h5>Undead Ace</h5>
@@ -437,36 +513,62 @@
                 </div>
             </div>
             
-    </section>
+    </main>
+</section>
 
-    <section id="diaryEntries" style="display: none;">
-    <!-- diary entries -->
-    <h2>Week 9 Submissions</h2>
-        <p>
-            <a href="interim_submission/index.html">Storyboard</a>
+<!--diary entries section, by default hidden from view-->
+<section id="diaryEntries" style="display: none;">
+    <!--main section container-->
+    <div id="main-container">
+        <!--background overlay image-->
+        <img class="background-overlays" src="resources/images/background_overlays/bats.png" id="bats">
+        <!-- diary entries -->
+        <main>
+            <!--title-->
+            <h2 class="align-center" class="links">Weekly Diary Entries & Write Up</h2>
+            <!--week9 submission and links-->
+            <h3 class="align-center">Week 9 Submission</h3>
+                <p class="align-center">
+                    <a href="interim_submission/index.html" class="links">Storyboard</a>
+                    <br>
+                    <a href="https://nm2207.s3.ap-southeast-1.amazonaws.com/NM2207_w9_concepts_used.pdf" class="links">PDF containing list of concepts used</a>
+                </p>
+
             <br>
-            <a href="https://nm2207.s3.ap-southeast-1.amazonaws.com/NM2207_w9_concepts_used.pdf">PDF containing list of concepts used</a>
-        </p>
 
-    <h2>Week 10 Submissions</h2>
-        <p>
-            <a href="w10_submission/index.html">Week 10 Submission</a>
-        </p>
-    
-    <h2>Week 11 Submissions</h2>
-        <p>
-            <a href="w11_submission/index.html">Week 11 Submission</a>
-        </p>
-    <h2>Week 12 Submissions</h2>
-    <p>
-        <a href="w12_submission/index.html">Week 12 Submission</a>
-    </p>
-    </section>
+            <!--week10 submission and links-->
+            <h3 class="align-center">Week 10 Submission</h3>
+                <p class="align-center">
+                    <a href="w10_submission/index.html" class="links">Week 10 Diary Entry</a>
+                </p>
 
-</main>
+            <br>
 
+            <!--week11 submission and links-->
+            <h3 class="align-center">Week 11 Submission</h3>
+                <p class="align-center">
+                    <a href="w11_submission/index.html" class="links">Week 11 Diary Entry</a>
+                </p>
 
+            <br>
+            
+            <!--week12 submission and links-->
+            <h3 class="align-center">Week 12 Submission</h3>
+                <p class="align-center">
+                    <a href="w12_submission/index.html" class="links">Week 12 Diary Entry</a>
+                </p>
 
+            <br>
+
+            <!--final submission and links-->
+            <h3 class="align-center">Final Submission</h3>
+                <p class="align-center"> 
+                    <a href="https://nm2207.s3.ap-southeast-1.amazonaws.com/finalprojectwriteup.pdf" class="links">Final Write Up</a>
+                </p>
+        </main>
+    </div>
+
+</section>
 
 
 </body>
